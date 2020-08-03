@@ -26,7 +26,9 @@ var parseMessage = function(data){
     const messageBody = data.html;
     //get ticker
     var ticker = messageBody.match("......</span></a> alert");
-    ticker = ticker[0].split("<")[0].trim();
+    if(ticker){
+    	ticker = ticker[0].split("<")[0].trim();
+    }
 
     var parseStrategy = function(messageBody){
     	var target = '$$',
