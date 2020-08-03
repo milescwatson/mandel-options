@@ -7,6 +7,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     mysql = require('./include/mysqlQueryExecutor'),
+    mailServer = require('./mail'),
     user = require('./user'),
     port = 3001;
 
@@ -30,5 +31,7 @@ app.get('/health', function(request, response, next) {
 });
 
 app.listen(port, function() {
-  console.log(`Option Analysis server running on port ${port}!`);
+  console.log(`Excel Option Analysis server running on port ${port}!`);
 });
+
+mailServer.start();
