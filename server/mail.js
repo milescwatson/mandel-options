@@ -1,6 +1,7 @@
 var mailin = require('mailin'),
     parse5 = require('parse5'),
-    fs = require('fs');
+    fs = require('fs'),
+    mysql = require("./include/mysqlQueryExecutor");
 
 var startMailServer = function(){
   mailin.start({
@@ -46,13 +47,36 @@ var parseMessage = function(data){
     		}
 
     	}
-    	return(accumulator.join(""));
+    	return(accumulator.join("").split('</td>')[0].trim());
     }
     var strategyTitle = parseStrategy(messageBody)
-
-    console.log('strategyTitle = ', strategyTitle)
-
-    var strategyDirection = '';
+    
+    var findDirection = function(strategyTitle){
+	if(strategyTitle.match(/down/i)){
+		return('bearish');
+	}else if(strategyTitle.match(/up/i)){
+		return('bullish');
+	}else{
+		return('invalid_strategy');
+	}
+    }
+    var strategyDirection = findDirection(strategyTitle);
+    
+    var returnObject = {
+        'ticker': ticker,
+	'strategyTitle': strategyTitle,
+	'direction': strategyDirection
+    }
+    const insertQuery = {
+        sql: 'INSERT INTO Strategies(`ticker`, `strategyDirection`, `strategyParsedText`, `emailBodyText`) VALUES(?,?,?,?)',
+	values: [ticker, strategyDirection, strategyTitle, messageBody]
+    }
+    mysql.query(insertQuery, function(error, result){
+       if(error){
+           console.log('error: could not add parsed strategy to database: ', error)
+       }else{
+       }
+    });
 }
 
 exports.start = startMailServer;

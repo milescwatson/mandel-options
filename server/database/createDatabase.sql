@@ -1,10 +1,11 @@
+CREATE USER IF NOT EXISTS 'excel'@'%' IDENTIFIED BY 'A7uSNm4WAGATnoqszG7yhUSp';
+GRANT ALL PRIVILEGES ON excel.* TO 'excel'@'%';
+FLUSH PRIVILEGES;
 
+CREATE DATABASE IF NOT EXISTS `excel`;
 
-CREATE DATABASE IF NOT EXISTS `option-strategy`;
-
-DROP TABLE IF EXISTS `option-strategy`.`Strategies`;
-
-CREATE TABLE `option-strategy`.`Strategies` (
+DROP TABLE IF EXISTS `excel`.`Strategies`;
+CREATE TABLE `excel`.`Strategies` (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   ticker VARCHAR(16),
   strategyDirection VARCHAR(16),
@@ -12,23 +13,14 @@ CREATE TABLE `option-strategy`.`Strategies` (
   emailBodyText LONGTEXT,
   createdDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   INDEX idx_ticker (ticker),
-  INDEX idx_strat (strategy)
-) ENGINE=InnoDB;
+  INDEX idx_strat (strategyDirection)
+)ENGINE=InnoDB;
 
-INSERT INTO `option-strategy`.`Strategies`()
-  VALUES(1, '123.123.123.123');
-
-
-DROP TABLE IF EXISTS `option-strategy`.`MarketData`;
-CREATE TABLE `option-strategy`.`MarketData` (
+DROP TABLE IF EXISTS `excel`.`MarketData`;
+CREATE TABLE `excel`.`MarketData` (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   ticker VARCHAR(16),
   EODDate DATE,
-  -- YYY-MM-DD ^
-  stockData JSON,
-  optionData JSON,
   createdDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   INDEX idx_ticker (ticker)
 )ENGINE=InnoDB;
-
--- Only stock market data will be EOD, likely no option data will be stored (maybe EOD)

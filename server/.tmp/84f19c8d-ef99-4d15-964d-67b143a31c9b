@@ -1,0 +1,420 @@
+Received: by mail-wr1-f43.google.com with SMTP id a5so23029420wrm.6
+        for <strategyparser@excel.level4s.com>; Sun, 02 Aug 2020 23:02:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=milescwatson.com; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=tmLBgvSfG3awJFVatNkbtWtqUMa024Y1RXcPSs3MZb0=;
+        b=paJUZjtt08qRzIgi/eoDmFcjOOBEy+AX1EPU7wEtydleCPn3KAv5CKFhVFbWPkr5nX
+         WwyuEgqYmOJZxrypTz+emeqhVC07veYzEh/4YlhB8tZ+qoP9QNd6o0pnmVdbAcFifrIV
+         2w4MfVGp5z+nxgpMFWMpP456DIsel092YDr9/HTwW0CacpxdfeM1oX0H5DOTtsbl1fph
+         EPfuLjKDPP17kw01QrJRNdgLdoIU0NKzEc5mvd+e46eAouLrFxiErgAv1KwgzlIRW8Gz
+         r/oSdkj+rA3YJsXhXtI3DIroQvkodn4DLfDnltGgSkEUj5TPtA4B5hePrPt0r0tz3T3R
+         AauQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=tmLBgvSfG3awJFVatNkbtWtqUMa024Y1RXcPSs3MZb0=;
+        b=nfGZyKbjHpwmzEf9/VxzI/J5OefTfuopo1TpLXZeibn6MNXURTbdESoOXzhRXW0/eD
+         Fpvt+pYZG72k+a5GLMXN4ihf1rUQy+3UeiIXqyCGYyIXOBInjLJEr4L9g5NdZgKdJ3hb
+         Buq6UYwjrQDk3ezSlSAfr4nlcDra5quIFIb7DNGrrAeITEnxfEfi89DNt6OKOdNcd0MD
+         pGSfnzf0x2Bng1wXR+GOWItL84SJ/897qZhBbJmqOM+lYNKuAzBIyPRpY8CjgBbWgy36
+         mW/m/tbWoy7+XflIPnZSkJWIuqDEHCjqpdS2slzkF0+FifjnsVvJsw3ztlUGo+3cd0d5
+         L8aA==
+X-Gm-Message-State: AOAM532XaR+o1uM0VFkN2Hy7ljW4wH3UCUju89XNOYe3ixZN5+DPp2ZD
+	gauEoWFRi+hFrVTWmALbCWr3qad6GCAgi33T9b8Dy8ky8PY=
+X-Google-Smtp-Source: ABdhPJy0gt6kWznsWZhHdOa4ZCKNr6XQYSrB8cTufvJN0YHIcaU9BCllq/Vm9680p8F3oBTaKE+E+hIf8qSqcDVaKbs=
+X-Received: by 2002:adf:8405:: with SMTP id 5mr13494738wrf.393.1596434566772;
+ Sun, 02 Aug 2020 23:02:46 -0700 (PDT)
+MIME-Version: 1.0
+References: <0101016f0ffa2bb8-7299f440-887b-44c5-b67c-46a945ff51e1-000000@us-west-2.amazonses.com>
+ <CAJ4uc5VJ7ZEm2Vp398DmdVYL=1E4ViqrESaFSRFn_KTK0ZXKSg@mail.gmail.com>
+ <CAJjmxnDGhds5EhUfAscR61qzbDnVKYRFkBeyMgdUTQ8T3-GECw@mail.gmail.com>
+ <CAJjmxnCKr_PmBZX+ivmkOJ7Ai3FVTicxEWLWOyYyJn-Qu5=04Q@mail.gmail.com>
+ <CAJjmxnDyL18N3hSyQ3Bc2yfjWrabVxxmr0+q7pc+g9+rOWKeUQ@mail.gmail.com>
+ <CAJjmxnD88a1G73HY7tQU_3BY6dy6+wb7=H4a=ZMLtxenbWSZcw@mail.gmail.com>
+ <CAJjmxnCahiQxT4AfxFrJmuSWqgN_VmmAOrk=8nAJStikZQdtCA@mail.gmail.com>
+ <CAJjmxnDLgKyCNHrr4nKTb_x2vgfVd+tX0SFOJT447=5EM6tHfQ@mail.gmail.com>
+ <CAJjmxnAfAA_RNsNL7syspGHdLj6o8+O5HSGJgt8om9rJPBTPhg@mail.gmail.com>
+ <CAJjmxnA8GraVi05-E950Oxs=xgyWv5fhatW5Sufsjg8wTJYTxA@mail.gmail.com>
+ <CAJjmxnCkO=OLP-SQXVHX9D0pgo1_XSNEBB=OL9u6YEnWc8V7vg@mail.gmail.com>
+ <CAJjmxnDkwfyfrGj7Vd7F2AxqeHnNns9k1nscEMPH1F194OBXhQ@mail.gmail.com>
+ <CAJjmxnBLwtgfOjODzuanCx9-0jzXaE94vdCEWBsZ-VFcTZ5YWg@mail.gmail.com>
+ <CAJjmxnC=ZGBOr91pWWZeu6nvUi3vfgMNVhHNZ+GwGH6jqW2aZQ@mail.gmail.com>
+ <CAJjmxnCWcOUEbdHLnoafNgppGPixuC-zyWiMn9tmJ+vxOcu4OA@mail.gmail.com>
+ <CAJjmxnDtM65rcXmU_AsoHdDOt7kn2NF9K6MemwXu-R9i4r8EHA@mail.gmail.com>
+ <CAJjmxnA0Dm_1f-Ync+i8k6rxeEkz8prK2q-e2Ft625HtMbCH0Q@mail.gmail.com>
+ <CAJjmxnBfF1M-HFw3PNoRS3p9EWZCobJ=8mhYwZa4ZLmGOjRx3w@mail.gmail.com>
+ <CAJjmxnDrEoOT9bih9ZoU3R=4WAz9GkTTuS+yg2b6-9W4W2sgQA@mail.gmail.com>
+ <CAJjmxnBvzt4EK1F_BKwmbax2gL0JOrNzU6oL8Xiu9fL3tcvWEA@mail.gmail.com>
+ <CAJjmxnDPiM+MET8TyPZOatuVGhWoFYQj-VXNX9qYhuyVUZfANQ@mail.gmail.com>
+ <CAJjmxnByBAQD17HEmo_f6x1fC-vA23fxBiAT36d4=+BRq1HSGw@mail.gmail.com>
+ <CAJjmxnDQsMfby6nRBq_zBPwT8i-9FdcOFR6NJ22CTj=9P0=xDA@mail.gmail.com>
+ <CAJjmxnCdjh98pTLi3ffS9LFELDK95cgjR0jZ=PA4=XCGewnZFQ@mail.gmail.com>
+ <CAJjmxnCt5wyLb-OPQOQa=PCQ6+uN6CW2FfwRckS1i2AC3N+FdQ@mail.gmail.com>
+ <CAJjmxnDRwDUbj+gtC4A+zu1-vehtMe2i7JX9kNTFJBk6wTPo3g@mail.gmail.com>
+ <CAJjmxnBQ5FS8DCwZN+CZVdGQpeaUUuE+AyYcUbVtGz1uABXpbg@mail.gmail.com>
+ <CAJjmxnBiuumM_L15-4EqM915bjpwoCA7GeVzZ98k5nAfeLm-cg@mail.gmail.com>
+ <CAJjmxnA0W_xsnx2sSXdv1PVfGWA3PAA2j5=6m4ZBDgk7wxEM7g@mail.gmail.com>
+ <CAJjmxnDAsmVzYhMU-iM9tN45gEhCvy3JQzHQZYchZ+Hr4av7QQ@mail.gmail.com>
+ <CAJjmxnBNpXOWrcR161VVOEQGkOJ+j-FSJf-i+vkP96h6dobJ=g@mail.gmail.com>
+ <CAJjmxnASGh_cyAttp_uiU+_dK5okK26uyjra_s1QgfWyJEqoiA@mail.gmail.com>
+ <CAJjmxnBCwa+fiT4W785gK-SY7qV3AmVjpMgkEXNgUsvGMvgtKQ@mail.gmail.com>
+ <CAJjmxnBGZqCTPcAq07N4KQnLK1p-G6XCoRNB_2csrCXP3F_YFg@mail.gmail.com>
+ <CAJjmxnDAfJPMGiSYyQ0ds7jBjYBqM7hZdcHOOWH-81ew6A+z0g@mail.gmail.com>
+ <CAJjmxnBCbRA6axta2a2JrnvxMHHiz68_DkOooHBPQ_wRirQMKQ@mail.gmail.com>
+ <CAJjmxnCo6hEc1Uka1TWKNPVLotd0UO=nRe1EC5Ac5Q+2dvebWQ@mail.gmail.com>
+ <CAJjmxnCU22zF5p9eQoG_7PL_bqzw2--cOaqN6E=_+ArqCNgxFw@mail.gmail.com>
+ <CAJjmxnAG=1p6DTyebRTeX2yy9=rt4m_kzaeHqX+JQZSLXV+vQw@mail.gmail.com>
+ <CAJjmxnBZvODxCn1J7XMzqnO4egJvJJNpqjX+ohSn9To1Rki=Tg@mail.gmail.com>
+ <CAJjmxnDCcb+jy9iu3Cngzk8w5OcjgNvg62qhtbXE8QfAd+-hWA@mail.gmail.com>
+ <CAJjmxnDK=HGEbtQDNP3UMPLOZP3MfD5A-mGHcxgBQSHyoKHntw@mail.gmail.com>
+ <CAJjmxnCK+k2sY2dd-munMwnw1NaOps9n7hyDnDTCa8qNRS__4Q@mail.gmail.com>
+ <CAJjmxnAri1bQL9JVdJZE_L43tdG4Wbz3HJnJZrzAMy6r_20+iA@mail.gmail.com>
+ <CAJjmxnDERZ+CowS3uetbQ3729A-1LCbwrsWciCoJeW6-Nc6HOA@mail.gmail.com>
+ <CAJjmxnAWT1F+BV=5s6nB8-x0oDXY9u9s5rqckRM-3aig+Ww9Dw@mail.gmail.com>
+ <CAJjmxnDioTCe9s0XyGpXB_C8j_eDxHN+MSY-BK5kqDD+Y3960w@mail.gmail.com> <CAJjmxnCcFYuqAxHC=Uz+P3GmXvPqP4UpS60q3DC7ZTxor=rW+g@mail.gmail.com>
+In-Reply-To: <CAJjmxnCcFYuqAxHC=Uz+P3GmXvPqP4UpS60q3DC7ZTxor=rW+g@mail.gmail.com>
+From: Miles Watson <miles@milescwatson.com>
+Date: Sun, 2 Aug 2020 23:02:35 -0700
+Message-ID: <CAJjmxnB60U4ECcgrvwPK2LU8D+MsZb5X28S47DCbTUwVB+EL_w@mail.gmail.com>
+Subject: Fwd: TradingView Alert: $$_4hr_Crossing_DOWN_PV
+To: strategyparser@excel.level4s.com
+Content-Type: multipart/alternative; boundary="000000000000428f1505abf2e3ab"
+
+--000000000000428f1505abf2e3ab
+Content-Type: text/plain; charset="UTF-8"
+
+[image: TradingView] <https://www.tradingview.com>
+
+M
+mandelsc
+Your XBTUSD <https://www.tradingview.com/chart/?symbol=BITMEX%3AXBTUSD>
+alert was triggered
+$$_4hr_Crossing_UP_PV
+Open your chart <https://www.tradingview.com/chart/?symbol=BITMEX%3AXBTUSD>
+470 Oldenone Worthington Road Westerville, OH 43082
+[image: App Store]
+<https://itunes.apple.com/us/app/tradingview-trading-community-charts-and-quotes/id1205990992>
+[image:
+Google Play]
+<https://play.google.com/store/apps/details?id=com.tradingview.tradingviewapp>
+[image: Fb] <https://www.facebook.com/tradingview/> [image: Tw]
+<https://twitter.com/tradingview/> [image: Yt]
+<https://www.youtube.com/channel/UCfOflihrkOKDQZ_ZKtF2VfQ/feed> [image: In]
+<https://www.linkedin.com/company/tradingview/>
+You are receiving this email because you are subscribed to get email
+notifications from TradingView Alerting Service. To manage your alerts
+options go to tradingview.com <https://www.tradingview.com>.
+
+--000000000000428f1505abf2e3ab
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"=
+gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><=
+div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div =
+dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail=
+_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=
+=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_qu=
+ote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div clas=
+s=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"l=
+tr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote">=
+<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr"><br></div><div dir=3D"lt=
+r"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><=
+div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"g=
+mail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><d=
+iv class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div d=
+ir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_=
+quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div cl=
+ass=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D=
+"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote=
+"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=
+=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"lt=
+r"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><=
+div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"g=
+mail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><d=
+iv class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div d=
+ir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div class=3D"gmail_=
+quote"><div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr"><div cl=
+ass=3D"gmail_quote"><div class=3D"gmail_quote"><div style=3D"margin:0px;pad=
+ding:0px;min-width:100%"><table width=3D"100%" align=3D"center" cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" style=3D"height:100%;margin:0px;borde=
+r-collapse:collapse;padding:0px;width:100%">
+			<tbody>
+				<tr>
+					<td align=3D"center" valign=3D"top" style=3D"margin:0px;background-col=
+or:rgb(247,247,247);height:100%;padding:0px;width:100%">
+						<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" style=3D"border-collapse:collapse">
+							<tbody>
+								<tr>
+									<td style=3D"background-color:rgb(247,247,247)" align=3D"center" v=
+align=3D"top">
+									=09
+													<table style=3D"border-collapse:collapse;max-width:640px" widt=
+h=3D"100%" align=3D"center" cellpadding=3D"0" cellspacing=3D"0">
+														<tbody>
+															<tr>
+																<td style=3D"padding:15px 20px 17px;text-align:left">
+																=09
+																				<table style=3D"border-collapse:collapse" width=3D"100%=
+" align=3D"center" cellpadding=3D"0" cellspacing=3D"0">
+																					<tbody>
+																						<tr>
+																							<td width=3D"50%" style=3D"padding-right:20px">
+																								<a href=3D"https://www.tradingview.com" style=3D"di=
+splay:inline-block;text-decoration:none;padding-top:5px;color:rgb(33,150,24=
+3)" target=3D"_blank"><img src=3D"https://s3.tradingview.com/mail/tradingvi=
+ew_logo.png" width=3D"126" height=3D"19" alt=3D"TradingView" style=3D"borde=
+r:0px;color:rgb(255,255,255);font-family:Arial,Helvetica,sans-serif;font-si=
+ze:16px;line-height:24px;max-width:133px;text-align:left"></a>
+																							</td>
+																							<td width=3D"50%">
+																								<table cellpadding=3D"0" cellspacing=3D"0" style=3D=
+"border-collapse:collapse;text-align:left">
+																									<tbody>
+																										<tr>
+																											<td width=3D"20" style=3D"padding-right:10px">
+																												<div style=3D"display:inline-block;height:19px;=
+vertical-align:top">
+																													<span style=3D"display:inline-block;background=
+-color:rgb(105,96,159);color:white;width:20px;height:20px;line-height:20px;=
+font-size:14px;font-family:&quot;Trebuchet MS&quot;,Arial,sans-serif;border=
+-radius:2px;text-align:center">M</span>
+																												</div>
+																											</td>
+																											<td style=3D"color:rgb(38,43,62);font-family:&qu=
+ot;Trebuchet MS&quot;,&quot;Lucida Grande&quot;,&quot;Lucida Sans Unicode&q=
+uot;,&quot;Lucida Sans&quot;,sans-serif;font-size:16px;line-height:19px;tex=
+t-align:left;white-space:nowrap;vertical-align:top">mandelsc</td>
+																										</tr>
+																									</tbody>
+																								</table>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			=09
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												=09
+									</td>
+								</tr>
+								<tr>
+									<td style=3D"background-color:rgb(247,247,247)" align=3D"center" v=
+align=3D"top">
+									=09
+													<table style=3D"border-collapse:collapse;max-width:600px" widt=
+h=3D"100%" align=3D"center" cellpadding=3D"0" cellspacing=3D"0">
+														<tbody>
+															<tr>
+																<td style=3D"background-color:rgb(255,255,255);border-radiu=
+s:4px;padding:40px 20px 30px">=09
+				<table width=3D"100%" align=3D"center" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"border-collapse:collapse;margin:0px auto;max-width:520px;width=
+:100%">
+					<tbody>
+	<tr>
+		<td style=3D"color:rgb(38,43,62);font-family:&quot;Trebuchet MS&quot;,&qu=
+ot;Lucida Grande&quot;,&quot;Lucida Sans Unicode&quot;,&quot;Lucida Sans&qu=
+ot;,sans-serif;font-size:30px;font-weight:700;line-height:1.2;padding-botto=
+m:20px;text-align:center;letter-spacing:-0.3px">
+			Your <a href=3D"https://www.tradingview.com/chart/?symbol=3DBITMEX%3AXBT=
+USD" style=3D"text-decoration:none;color:rgb(55,166,239)" target=3D"_blank"=
+><span style=3D"color:rgb(55,166,239)">XBTUSD</span></a> alert was triggere=
+d
+		</td>
+	</tr>
+	<tr>
+		<td style=3D"color:rgb(76,82,94);font-family:&quot;Trebuchet MS&quot;,&qu=
+ot;Lucida Grande&quot;,&quot;Lucida Sans Unicode&quot;,&quot;Lucida Sans&qu=
+ot;,sans-serif;font-size:18px;line-height:1.56;text-align:center;padding-to=
+p:11px;padding-bottom:32px;font-weight:700">
+			$$_4hr_Crossing_UP_PV
+		</td>
+	</tr>
+<tr>
+		<td style=3D"padding-bottom:23px;text-align:center">
+		=09
+						<table style=3D"border-collapse:separate;width:auto;margin:auto" alig=
+n=3D"center" cellpadding=3D"0" cellspacing=3D"0">
+							<tbody>
+								<tr>
+									<td height=3D"32" style=3D"background-color:rgb(33,150,243);border=
+:1px solid rgb(33,150,243);border-radius:4px;height:32px;text-align:center;=
+vertical-align:middle">
+										<a href=3D"https://www.tradingview.com/chart/?symbol=3DBITMEX%3AX=
+BTUSD" style=3D"background-color:rgb(33,150,243);display:block;font-family:=
+&quot;Trebuchet MS&quot;,Arial,sans-serif;font-size:17px;text-align:center;=
+text-decoration:none;white-space:normal;padding:7px 24px 5px;line-height:1;=
+color:rgb(255,255,255)" target=3D"_blank">
+											<span style=3D"color:rgb(255,255,255)">Open your chart</span>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					=09
+		</td>
+	</tr>
+					</tbody>
+				</table>
+			=09
+</td>
+															</tr>
+														</tbody>
+													</table>
+												=09
+									</td>
+								</tr>
+								<tr>
+									<td style=3D"background-color:rgb(247,247,247);table-layout:fixed;=
+text-align:center" align=3D"center" valign=3D"top">
+									=09
+													<table style=3D"border-collapse:collapse;max-width:640px;margi=
+n:auto" width=3D"100%" align=3D"center" cellpadding=3D"0" cellspacing=3D"0"=
+>
+														<tbody>
+															<tr>
+																<td style=3D"padding:40px 20px 20px;vertical-align:top">
+																=09
+																				<table style=3D"border-collapse:collapse;margin:0px aut=
+o;max-width:520px" width=3D"100%" align=3D"center" cellpadding=3D"0" cellsp=
+acing=3D"0">
+																					<tbody>
+																						<tr>
+																							<td style=3D"color:rgb(139,142,149);font-family:&quo=
+t;Trebuchet MS&quot;,&quot;Lucida Grande&quot;,&quot;Lucida Sans Unicode&qu=
+ot;,&quot;Lucida Sans&quot;,sans-serif;font-size:14px;line-height:20px;text=
+-align:center;padding-bottom:10px;vertical-align:top">470 Olde<span style=
+=3D"display:none">none</span> Worthington Road Westerville, OH 43082</td>
+																						</tr>
+																						<tr>
+																							<td style=3D"vertical-align:top">
+																							=09
+																											<table style=3D"border-collapse:collapse;margin:=
+0px auto;max-width:450px;min-width:320px" width=3D"100%" align=3D"center" c=
+ellpadding=3D"0" cellspacing=3D"0">
+																												<tbody>
+																													<tr>
+																														<td style=3D"font-size:0px;padding-bottom:20p=
+x;text-align:center;vertical-align:top">
+																														=09
+																																		<table align=3D"center" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"border-collapse:collapse">
+																																			<tbody>
+																																				<tr>
+																																					<td style=3D"padding-bottom:10px;paddi=
+ng-top:10px;padding-right:3px;text-align:center;vertical-align:top">
+																																						<a href=3D"https://itunes.apple.com/u=
+s/app/tradingview-trading-community-charts-and-quotes/id1205990992" style=
+=3D"text-decoration:none;color:rgb(33,150,243)" target=3D"_blank"><img src=
+=3D"https://s3.tradingview.com/mail/appstore_email_logo.png" width=3D"105" =
+height=3D"32" alt=3D"App Store" style=3D"border:0px"></a>
+																																					</td>
+																																					<td style=3D"padding-bottom:10px;paddi=
+ng-top:10px;padding-left:3px;text-align:center;vertical-align:top">
+																																						<a href=3D"https://play.google.com/st=
+ore/apps/details?id=3Dcom.tradingview.tradingviewapp" style=3D"text-decorat=
+ion:none;color:rgb(33,150,243)" target=3D"_blank"><img src=3D"https://s3.tr=
+adingview.com/mail/googleplay_email_logo.png" width=3D"105" height=3D"32" a=
+lt=3D"Google Play" style=3D"border:0px"></a>
+																																					</td>
+																																				</tr>
+																																			</tbody>
+																																		</table>
+																																	=09
+																																		<table width=3D"180" align=3D"center" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:collapse">
+																																			<tbody>
+																																				<tr>
+																																					<td style=3D"padding-bottom:10px;paddi=
+ng-top:10px;text-align:left;vertical-align:top">
+																																						<table align=3D"center" cellpadding=
+=3D"0" style=3D"border-collapse:collapse;margin:auto">
+																																							<tbody>
+																																								<tr>
+																																									<td style=3D"padding-left:0px;padd=
+ing-right:3px;vertical-align:top">
+																																										<a href=3D"https://www.facebook.c=
+om/tradingview/" style=3D"text-decoration:none;color:rgb(33,150,243)" targe=
+t=3D"_blank"><img src=3D"https://s3.tradingview.com/mail/facebook_email_log=
+o.png" width=3D"32" height=3D"32" alt=3D"Fb" style=3D"border:0px"></a>
+																																									</td>
+																																									<td style=3D"padding-left:3px;padd=
+ing-right:3px;vertical-align:top">
+																																										<a href=3D"https://twitter.com/tr=
+adingview/" style=3D"text-decoration:none;color:rgb(33,150,243)" target=3D"=
+_blank"><img src=3D"https://s3.tradingview.com/mail/twitter_email_logo.png"=
+ width=3D"32" height=3D"32" alt=3D"Tw" style=3D"border:0px"></a>
+																																									</td>
+																																									<td style=3D"padding-left:3px;padd=
+ing-right:3px;vertical-align:top">
+																																										<a href=3D"https://www.youtube.co=
+m/channel/UCfOflihrkOKDQZ_ZKtF2VfQ/feed" style=3D"text-decoration:none;colo=
+r:rgb(33,150,243)" target=3D"_blank"><img src=3D"https://s3.tradingview.com=
+/mail/youtube_email_logo.png" width=3D"32" height=3D"32" alt=3D"Yt" style=
+=3D"border:0px"></a>
+																																									</td>
+																																									<td style=3D"padding-left:3px;padd=
+ing-right:0px;vertical-align:top">
+																																										<a href=3D"https://www.linkedin.c=
+om/company/tradingview/" style=3D"text-decoration:none;color:rgb(33,150,243=
+)" target=3D"_blank"><img src=3D"https://s3.tradingview.com/mail/linkedin_e=
+mail_logo.png" width=3D"32" height=3D"32" alt=3D"In" style=3D"border:0px"><=
+/a>
+																																									</td>
+																																								</tr>
+																																							</tbody>
+																																						</table>
+																																					</td>
+																																				</tr>
+																																			</tbody>
+																																		</table>
+																																	=09
+																														</td>
+																													</tr>
+																												</tbody>
+																											</table>
+																										=09
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style=3D"color:rgb(139,142,149);font-family:&quo=
+t;Trebuchet MS&quot;,&quot;Lucida Grande&quot;,&quot;Lucida Sans Unicode&qu=
+ot;,&quot;Lucida Sans&quot;,sans-serif;font-size:14px;line-height:20px;text=
+-align:center;vertical-align:top">
+	You are receiving this email because you are subscribed to get email notif=
+ications from TradingView Alerting Service. To manage your alerts options g=
+o to <a href=3D"https://www.tradingview.com" style=3D"text-decoration:none;=
+color:rgb(33,150,243)" target=3D"_blank"><span style=3D"color:rgb(33,150,24=
+3)">tradingview.com</span></a>.
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			=09
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												=09
+									</td>
+								</tr>
+							</tbody>
+						</table></td></tr></tbody></table></div></div></div><div><br></div></=
+div></div></div></div></div></div></div></div></div></div></div></div></div=
+></div></div></div></div></div></div></div></div></div></div></div></div></=
+div></div></div></div></div></div></div></div></div></div></div></div></div=
+></div></div></div></div></div></div></div></div></div></div></div></div></=
+div></div></div></div></div></div></div></div></div></div></div></div></div=
+></div></div></div></div></div></div></div></div></div></div></div></div></=
+div></div></div></div></div></div></div></div></div></div></div></div></div=
+></div></div></div></div></div>
+
+--000000000000428f1505abf2e3ab--
