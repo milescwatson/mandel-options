@@ -31,7 +31,7 @@ function Header(props){
   return(
     <React.Fragment>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             {globals.siteName}
           </Navbar.Brand>
 

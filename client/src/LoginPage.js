@@ -12,7 +12,7 @@ var LoginPage = function(){
         </Navbar.Brand>
       </Navbar>
 
-      <h3>Login Page</h3>
+      <h3>Login</h3>
 
       <form method="POST" action="/login">
         <div className="form-group">
