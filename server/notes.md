@@ -10,5 +10,5 @@ DO Password:
 Zp3KutcpqeJ5a
 
 DB credentials:
-u/n: scott
+u/n: excel
 pw: A7uSNm4WAGATnoqszG7yhUSp
