@@ -24,61 +24,71 @@ mailin.on('message', function (connection, data, content) {
 var parseMessage = function(data){
     const messageSubject = data.subject;
     const messageBody = data.html;
-    //get ticker
-    var ticker = messageBody.match("......</span></a> alert");
-    if(ticker){
-    	ticker = ticker[0].split("<")[0].trim();
-    }
 
-    var parseStrategy = function(messageBody){
-    	var target = '$$',
-    			targetIterator = 0,
-    			accumulator = [],
-    			accumulate = false;
-
-    	for (var i = 0; i < messageBody.length; i++) {
-    		if(messageBody[i] === '$' && messageBody[i+1] === '$'){
-    			accumulate = true;
-    		}
-    		if(accumulate){
-    			if(messageBody.substr(i,i+4) === "</td>"){
-    				accumulate = false;
-    			}else{
-    				accumulator.push(messageBody[i]);
-    			}
-    		}
-
-    	}
-    	return(accumulator.join("").split('</td>')[0].trim());
-    }
-    var strategyTitle = parseStrategy(messageBody)
-    
     var findDirection = function(strategyTitle){
-	if(strategyTitle.match(/down/i)){
-		return('bearish');
-	}else if(strategyTitle.match(/up/i)){
-		return('bullish');
-	}else{
-		return('invalid_strategy');
-	}
+    	if(strategyTitle.match(/down/i)){
+    		return('bearish');
+    	}else if(strategyTitle.match(/up/i)){
+    		return('bullish');
+    	}else{
+    		return('invalid_strategy');
+    	}
     }
-    var strategyDirection = findDirection(strategyTitle);
-    
-    var returnObject = {
-        'ticker': ticker,
-	'strategyTitle': strategyTitle,
-	'direction': strategyDirection
+
+    var getTickerAndExchanges = function(messageBody){
+    	const tickerRegex = /[^>]*[A-Z]:[A-Z][^<]*/g
+
+    	const parsedArray = [...messageBody.matchAll(tickerRegex)];
+
+    	var tickerAndExchange = [];
+
+    	for (var i = 0; i < parsedArray.length; i++) {
+    		const selectedText = parsedArray[i][0]
+    		var item = {}
+    		item.exchange = selectedText.split(':')[0]
+    		item.ticker = selectedText.split(':')[1]
+    		tickerAndExchange.push(item);
+    	}
+    	return tickerAndExchange;
     }
-    const insertQuery = {
-        sql: 'INSERT INTO Strategies(`ticker`, `strategyDirection`, `strategyParsedText`, `emailBodyText`) VALUES(?,?,?,?)',
-	values: [ticker, strategyDirection, strategyTitle, messageBody]
+
+    var getStrategyTitle = function(messageBody){
+    	const regex = /\$\$.[^<]*/
+    	var strategyTitle = messageBody.match(regex)[0]
+    	return(strategyTitle)
     }
-    mysql.query(insertQuery, function(error, result){
-       if(error){
-           console.log('error: could not add parsed strategy to database: ', error)
-       }else{
-       }
-    });
+
+    var findDirection = function(strategyTitle){
+    	if(strategyTitle.match(/down/i)){
+    		return('bearish');
+    	}else if(strategyTitle.match(/up/i)){
+    		return('bullish');
+    	}else{
+    		return('invalid_strategy');
+    	}
+    }
+
+    var sqlInsertStrategy = function(){
+      // go through each ticker
+      const strategyTitle = getStrategyTitle(messageBody),
+            direction = findDirection(strategyTitle),
+            tickerAndExchangeObjects = getTickerAndExchanges(messageBody);
+
+      for (var i = 0; i < tickerAndExchangeObjects.length; i++) {
+        const insertQuery = {
+          sql: 'INSERT INTO Strategies(`ticker`, `exchange`, `strategyDirection`, `strategyParsedText`, `emailBodyText`) VALUES(?,?,?,?,?)',
+          values: [tickerAndExchangeObjects[i].ticker, tickerAndExchangeObjects[i].exchange, direction, strategyTitle, messageBody]
+        }
+        mysql.query(insertQuery, function(error, result){
+          if(error){
+            console.log('error: could not add parsed strategy to database: ', error)
+          }else{
+            console.log('success, result = ', result);
+          }
+        });
+      }
+    }
+    sqlInsertStrategy();
 }
 
 exports.start = startMailServer;

@@ -1,0 +1,309 @@
+Received: by mail-pf1-f179.google.com with SMTP id m8so12360917pfh.3
+        for <strategyparser@excel.level4s.com>; Mon, 03 Aug 2020 17:11:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=milescwatson.com; s=google;
+        h=from:mime-version:subject:message-id:references:to:date;
+        bh=hRGdnK1vV0AxKIAMIs7Aa3b2FLi/lloq9ZOc/WAscTc=;
+        b=SbUHQKBHKUKcQiM3XGuCgQPm7kcaJUOsq3HWat28YAoWXyBem6xbe4+isrPcEEM/CA
+         TOuf6v7W9sWlqyZkZrGWcVSOf4L3EHGErK3cs//Qj6NzLW7KI7BCScYsXNr2HejyJN2h
+         DGh0akpJ5t+QDPgXYeVXBmlNqQy3mC/dpp6+DocD/0zFhKHitQ5vxKtA8TCf6Y4exDw3
+         NYblamnHT8hIbs5QvDb6nujzwGKL9lMc56T50BzD1z48MptEByB7Kc7uhsJ/fQRm1vJO
+         J+PD/5uSu614PXaGXJXtqOP+bHKN68RkAoCgj5jAcPWH/Ji2u33lZ9mfiBO/oWU+mGLP
+         5AoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:mime-version:subject:message-id:references
+         :to:date;
+        bh=hRGdnK1vV0AxKIAMIs7Aa3b2FLi/lloq9ZOc/WAscTc=;
+        b=mi/4IIFiuxC/TlWyGvogUJ3loUpTCEp9wvJ3C+92EvmZSvcd8I4IRLsCIEmEa/CORX
+         kMFCnuLqjhzha20G3FahoxOsb2HCVuPNWUb360bJKZ68gy5qXgXoWZJd4cwNFItxiMc5
+         JSRFGvy9bwQl3+DeiFuthkWfCFfORCzNW2cguaE486gG/qXlHfFOYYWs1gcd7P3yYj3W
+         kxPpizgaaatDIP5njUPwjWE0On8pIbzlaSM9IjPEcBKvvAhcvPaDox0G0DbJJnE70AEQ
+         djD2kc5ApnW3u/D4EvIjYeAzUvY/+GwBJ86yryYN5SBovVxOg3GQ0rJ4NcARdHIHdxk9
+         nCXg==
+X-Gm-Message-State: AOAM531xDQPfyRUYlnvkJRTAfaXxWeYLQ3exbjJnUny+smA9GpDO+uul
+	eOil3wuEgeFf/w7PoW3ahExyf6lRrc46lw==
+X-Google-Smtp-Source: ABdhPJz07ctr/J0mJuhszxyBFuYbqgqRtDfr0mouigbzlXbvbuBhWS/cAPuSu7vUDf2M6wJeTxwR1A==
+X-Received: by 2002:aa7:9f1b:: with SMTP id g27mr17685629pfr.215.1596499876372;
+        Mon, 03 Aug 2020 17:11:16 -0700 (PDT)
+Return-Path: <miles@milescwatson.com>
+Received: from [192.168.1.147] (c-76-126-103-172.hsd1.ca.comcast.net. [76.126.103.172])
+        by smtp.gmail.com with ESMTPSA id 144sm10452894pfu.114.2020.08.03.17.11.15
+        for <strategyparser@excel.level4s.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 03 Aug 2020 17:11:15 -0700 (PDT)
+From: Miles Watson <miles@milescwatson.com>
+Content-Type: multipart/alternative;
+	boundary="Apple-Mail=_5968D89A-D9CA-4015-8690-EA6DBBFCA3BA"
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.1\))
+Subject: Fwd: 
+Message-Id: <86405C85-02C1-4F15-B84B-A50F8E4A0776@milescwatson.com>
+References: <5AA7D6E2-3854-4BDF-B6FC-9FA79116D9F7@milescwatson.com>
+To: strategyparser@excel.level4s.com
+Date: Mon, 3 Aug 2020 17:11:14 -0700
+X-Mailer: Apple Mail (2.3608.120.23.2.1)
+
+
+--Apple-Mail=_5968D89A-D9CA-4015-8690-EA6DBBFCA3BA
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+> =20
+>  <https://www.tradingview.com/>	 <https://www.tradingview.com/>=09=
+
+> =20
+> =20
+>=20
+> =20
+> Your alert was triggered
+> =20
+> $$_UP_DAILY_New Bull Divergence Screener
+> =20
+> Check out the following new tickers: NYSE:ALLE =
+<https://www.tradingview.com/chart/?symbol=3DNYSE%3AALLE>, NYSE:AWI =
+<https://www.tradingview.com/chart/?symbol=3DNYSE%3AAWI>
+> =20
+> Go to Screener <https://www.tradingview.com/screener>
+> =20
+> =20
+> Thanks for reading,
+> Team TradingView
+>=20
+> 33 Irving Place, New York,
+> NY 10003
+>=20
+>  =
+<https://itunes.apple.com/us/app/tradingview-trading-community-charts-and-=
+quotes/id1205990992>   =
+<https://play.google.com/store/apps/details?id=3Dcom.tradingview.tradingvi=
+ewapp>
+>=20
+>  <https://www.facebook.com/tradingview/>   =
+<https://www.youtube.com/channel/UCfOflihrkOKDQZ_ZKtF2VfQ>   =
+<https://www.linkedin.com/company/tradingview/>   =
+<https://twitter.com/tradingview/>
+>=20
+> =20
+> =20
+> This email was sent to scotthaasbot@gmail.com =
+<mailto:scotthaasbot@gmail.com>
+> because you asked to be alerted on TradingView.com =
+<https://www.tradingview.com/>
+>=20
+>=20
+
+
+--Apple-Mail=_5968D89A-D9CA-4015-8690-EA6DBBFCA3BA
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;" =
+class=3D""><div><blockquote type=3D"cite" class=3D""><div =
+style=3D"word-wrap: break-word; -webkit-nbsp-mode: space; line-break: =
+after-white-space;" class=3D""><table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" width=3D"100%" class=3D"" style=3D"background-color: =
+rgb(255, 255, 255); font-family: Times; orphans: 2; widows: 2;"><tbody =
+class=3D""><tr class=3D""><td bgcolor=3D"#ffffff" align=3D"center" =
+class=3D""><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+width=3D"100%" style=3D"max-width: 600px;" class=3D""><tbody =
+class=3D""><tr class=3D""><td colspan=3D"3" height=3D"35" =
+style=3D"font-size: 24px; line-height: 24px;" =
+class=3D"">&nbsp;</td></tr><tr class=3D""><td width=3D"44" align=3D"left" =
+valign=3D"middle" class=3D"m_1909682187236224772padding-left" =
+style=3D"padding-top: 5px; padding-bottom: 5px;"><a =
+href=3D"https://www.tradingview.com/" target=3D"_blank" class=3D""><img =
+alt=3D"TradingView" =
+src=3D"https://s3.tradingview.com/mail/v3/tradingview-logo-blue.png" =
+width=3D"42" height=3D"24" border=3D"0" style=3D"height: 24px; =
+min-height: 24px; max-height: 24px; width: 42px; min-width: 42px; =
+max-width: 42px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a></td><td align=3D"left" valign=3D"bottom" style=3D"padding:=
+ 5px 10px;" class=3D""><a href=3D"https://www.tradingview.com/" =
+target=3D"_blank" class=3D""><img alt=3D"TradingView" =
+src=3D"https://s3.tradingview.com/mail/v3/tradingview-text-dark.png" =
+width=3D"113" height=3D"20" border=3D"0" style=3D"height: 20px; =
+min-height: 20px; max-height: 20px; width: 113px; min-width: 113px; =
+max-width: 113px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a></td><td align=3D"right" valign=3D"middle" =
+class=3D"m_1909682187236224772hide =
+m_1909682187236224772padding-horizontal" style=3D"padding-top: 5px; =
+padding-bottom: 5px;"><p style=3D"font-family: &quot;Trebuchet MS&quot;, =
+Helvetica, Arial, sans-serif; font-size: 18px; line-height: 18px; =
+margin: 0px; padding: 0px; color: rgb(19, 23, 34);" =
+class=3D"">&nbsp;</p></td></tr><tr class=3D""><td colspan=3D"3" =
+height=3D"34" style=3D"font-size: 24px; line-height: 24px;" =
+class=3D"">&nbsp;</td></tr></tbody></table></td></tr></tbody></table><div =
+class=3D"gmail_quote" style=3D"font-family: Times; font-size: inherit; =
+font-variant-ligatures: normal; orphans: 2; widows: 2;"><div =
+style=3D"background-color: rgb(255, 255, 255); margin: 0px !important; =
+padding: 0px !important;" class=3D""><table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" width=3D"100%" class=3D""><tbody class=3D""><tr =
+class=3D""><td bgcolor=3D"#ffffff" align=3D"center" style=3D"padding: =
+0px 10px;" class=3D""><table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" width=3D"100%" style=3D"max-width: 600px;" =
+class=3D""><tbody class=3D""><tr class=3D""><td align=3D"left" =
+valign=3D"top" style=3D"border-top-left-radius: 0px; =
+border-top-right-radius: 0px; border-bottom-right-radius: 0px; =
+border-bottom-left-radius: 0px;" class=3D""><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" width=3D"100%" class=3D""><tbody =
+class=3D""><tr class=3D""><td valign=3D"top" align=3D"center" =
+style=3D"text-align: center; padding: 0px;" class=3D""><img alt=3D"" =
+src=3D"https://s3.tradingview.com/mail/v3/illustration/alert-with-bars-lig=
+ht.png" width=3D"120" height=3D"120" border=3D"0" style=3D"height: =
+120px; min-height: 120px; max-height: 120px; width: 120px; min-width: =
+120px; max-width: 120px; color: rgb(19, 23, 34); font-family: =
+&quot;Trebuchet MS&quot;, Helvetica, Arial, sans-serif; font-size: =
+18px;" class=3D""></td></tr><tr class=3D""><td height=3D"19" =
+style=3D"font-size: 19px; line-height: 19px;" =
+class=3D"">&nbsp;</td></tr><tr class=3D""><td valign=3D"top" =
+align=3D"left" style=3D"padding: 0px;" class=3D""><h3 =
+style=3D"font-family: &quot;Trebuchet MS&quot;, Helvetica, Arial, =
+sans-serif; font-size: 36px; line-height: 44px; margin: 0px; padding: =
+0px; color: rgb(19, 23, 34); text-align: center !important;" =
+class=3D"">Your alert was triggered</h3></td></tr><tr class=3D""><td =
+height=3D"14" style=3D"font-size: 14px; line-height: 14px;" =
+class=3D"">&nbsp;</td></tr><tr class=3D""><td valign=3D"top" =
+align=3D"left" style=3D"padding: 0px;" class=3D""><div =
+style=3D"font-family: &quot;Trebuchet MS&quot;, Helvetica, Arial, =
+sans-serif; font-size: 18px; line-height: 28px; margin: 0px; padding: =
+0px; color: rgb(19, 23, 34); text-align: center !important;" =
+class=3D"">$$_UP_DAILY_New Bull Divergence Screener</div></td></tr><tr =
+class=3D""><td height=3D"14" style=3D"font-size: 14px; line-height: =
+14px;" class=3D"">&nbsp;</td></tr><tr class=3D""><td valign=3D"top" =
+align=3D"left" style=3D"padding: 0px;" class=3D""><div =
+style=3D"font-family: &quot;Trebuchet MS&quot;, Helvetica, Arial, =
+sans-serif; font-size: 18px; line-height: 28px; margin: 0px; padding: =
+0px; color: rgb(19, 23, 34); text-align: center !important;" =
+class=3D"">Check out the following new tickers:&nbsp;<a =
+href=3D"https://www.tradingview.com/chart/?symbol=3DNYSE%3AALLE" =
+target=3D"_blank" style=3D"text-decoration: none; color: rgb(33, 150, =
+243); word-break: break-word;" class=3D"">NYSE:ALLE</a>,&nbsp;<a =
+href=3D"https://www.tradingview.com/chart/?symbol=3DNYSE%3AAWI" =
+target=3D"_blank" style=3D"text-decoration: none; color: rgb(33, 150, =
+243); word-break: break-word;" class=3D"">NYSE:AWI</a></div></td></tr><tr =
+class=3D""><td height=3D"35" style=3D"font-size: 24px; line-height: =
+24px;" class=3D"">&nbsp;</td></tr><tr class=3D""><td valign=3D"top" =
+align=3D"left" style=3D"padding: 0px;" class=3D""><table border=3D"0" =
+cellspacing=3D"0" cellpadding=3D"0" align=3D"center" class=3D""><tbody =
+class=3D""><tr class=3D""><td align=3D"center" bgcolor=3D"#2196f3" =
+style=3D"border-radius: 120px;" class=3D""><a =
+href=3D"https://www.tradingview.com/screener" target=3D"_blank" =
+style=3D"font-family: &quot;Trebuchet MS&quot;, Helvetica, Arial, =
+sans-serif; font-size: 24px; display: inline-block; padding: 13px 40px; =
+text-decoration: none; color: rgb(255, 255, 255); border: 1px solid =
+rgb(33, 150, 243); border-top-left-radius: 120px; =
+border-top-right-radius: 120px; border-bottom-right-radius: 120px; =
+border-bottom-left-radius: 120px;" class=3D"">Go to =
+Screener</a></td></tr></tbody></table></td></tr><tr class=3D""><td =
+height=3D"42" style=3D"font-size: 24px; line-height: 24px;" =
+class=3D"">&nbsp;</td></tr></tbody></table></td></tr></tbody></table></td>=
+</tr></tbody></table><table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" width=3D"100%" class=3D""><tbody class=3D""><tr =
+class=3D""><td height=3D"62" bgcolor=3D"#ffffff" style=3D"font-size: =
+24px; line-height: 24px; border-top: 1px solid rgb(224, 227, 235);" =
+class=3D"">&nbsp;</td></tr><tr class=3D""><td bgcolor=3D"#ffffff" =
+align=3D"center" class=3D"m_1909682187236224772padding-horizontal"><table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" =
+style=3D"max-width: 600px;" class=3D""><tbody class=3D""><tr =
+class=3D""><td align=3D"left" valign=3D"top" class=3D""><table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" =
+class=3D""><tbody class=3D""><tr class=3D""><td valign=3D"top" =
+align=3D"center" style=3D"text-align: center;" class=3D""><table =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
+class=3D""><tbody class=3D""><tr class=3D""><td =
+class=3D"m_1909682187236224772center m_1909682187236224772full" =
+align=3D"left"><p style=3D"font-family: &quot;Trebuchet MS&quot;, =
+Helvetica, Arial, sans-serif; font-size: 14px; line-height: 21px; =
+margin: 0px 0px 26px; padding: 0px; color: rgb(120, 123, 134);" =
+class=3D"">Thanks for reading,<br class=3D"">Team =
+TradingView</p></td><td class=3D"m_1909682187236224772center =
+m_1909682187236224772full" align=3D"right"><p style=3D"font-family: =
+&quot;Trebuchet MS&quot;, Helvetica, Arial, sans-serif; font-size: 14px; =
+line-height: 21px; margin: 0px 0px 26px; padding: 0px; color: rgb(120, =
+123, 134);" class=3D"">33 Irving Place, New York,<br class=3D"">NY =
+10003</p></td></tr></tbody></table></td></tr><tr class=3D""><td =
+valign=3D"top" align=3D"left" class=3D""><table border=3D"0" =
+cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" class=3D""><tbody =
+class=3D""><tr class=3D""><td class=3D"m_1909682187236224772center =
+m_1909682187236224772full"><a =
+href=3D"https://itunes.apple.com/us/app/tradingview-trading-community-char=
+ts-and-quotes/id1205990992" target=3D"_blank" class=3D""><img =
+alt=3D"Download on the App Store" =
+src=3D"https://s3.tradingview.com/mail/v3/button-app-store-light.png" =
+width=3D"135" height=3D"40" border=3D"0" style=3D"height: 40px; =
+min-height: 40px; max-height: 40px; width: 135px; min-width: 135px; =
+max-width: 135px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a>&nbsp;&nbsp;<a =
+href=3D"https://play.google.com/store/apps/details?id=3Dcom.tradingview.tr=
+adingviewapp" target=3D"_blank" class=3D""><img alt=3D"Get it on Google =
+Play" =
+src=3D"https://s3.tradingview.com/mail/v3/button-google-play-light.png" =
+width=3D"135" height=3D"40" border=3D"0" style=3D"height: 40px; =
+min-height: 40px; max-height: 40px; width: 135px; min-width: 135px; =
+max-width: 135px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a><br class=3D""><br class=3D""></td><td =
+class=3D"m_1909682187236224772center m_1909682187236224772full" =
+align=3D"right" nowrap=3D""><a =
+href=3D"https://www.facebook.com/tradingview/" target=3D"_blank" =
+class=3D""><img alt=3D"TradingView on Facebook" =
+src=3D"https://s3.tradingview.com/mail/v3/button-facebook-light.png" =
+width=3D"40" height=3D"40" border=3D"0" style=3D"height: 40px; =
+min-height: 40px; max-height: 40px; width: 40px; min-width: 40px; =
+max-width: 40px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a>&nbsp;&nbsp;<a =
+href=3D"https://www.youtube.com/channel/UCfOflihrkOKDQZ_ZKtF2VfQ" =
+target=3D"_blank" class=3D""><img alt=3D"TradingView on Youtube" =
+src=3D"https://s3.tradingview.com/mail/v3/button-youtube-light.png" =
+width=3D"40" height=3D"40" border=3D"0" style=3D"height: 40px; =
+min-height: 40px; max-height: 40px; width: 40px; min-width: 40px; =
+max-width: 40px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a>&nbsp;&nbsp;<a =
+href=3D"https://www.linkedin.com/company/tradingview/" target=3D"_blank" =
+class=3D""><img alt=3D"TradingView on LinkedIn" =
+src=3D"https://s3.tradingview.com/mail/v3/button-linkedin-light.png" =
+width=3D"40" height=3D"40" border=3D"0" style=3D"height: 40px; =
+min-height: 40px; max-height: 40px; width: 40px; min-width: 40px; =
+max-width: 40px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a>&nbsp;&nbsp;<a href=3D"https://twitter.com/tradingview/" =
+target=3D"_blank" class=3D""><img alt=3D"TradingView on Twitter" =
+src=3D"https://s3.tradingview.com/mail/v3/button-twitter-light.png" =
+width=3D"40" height=3D"40" border=3D"0" style=3D"height: 40px; =
+min-height: 40px; max-height: 40px; width: 40px; min-width: 40px; =
+max-width: 40px; color: rgb(19, 23, 34); font-family: &quot;Trebuchet =
+MS&quot;, Helvetica, Arial, sans-serif; font-size: 18px;" =
+class=3D""></a><br class=3D""><br =
+class=3D""></td></tr></tbody></table></td></tr><tr class=3D""><td =
+height=3D"18" style=3D"font-size: 18px; line-height: 18px;" =
+class=3D"">&nbsp;</td></tr><tr class=3D""><td height=3D"39" =
+style=3D"border-top: 1px solid rgb(224, 227, 235); font-size: 24px; =
+line-height: 24px;" class=3D"">&nbsp;</td></tr><tr class=3D""><td =
+valign=3D"top" align=3D"center" style=3D"text-align: center; padding: =
+0px;" class=3D""><div style=3D"font-family: &quot;Trebuchet MS&quot;, =
+Helvetica, Arial, sans-serif; font-size: 14px; line-height: 21px; =
+margin: 0px; padding: 0px; color: rgb(120, 123, 134);" class=3D"">This =
+email was sent to&nbsp;<a href=3D"mailto:scotthaasbot@gmail.com" =
+target=3D"_blank" style=3D"text-decoration: none; color: rgb(33, 150, =
+243); word-break: break-word;" class=3D"">scotthaasbot@gmail.com</a><br =
+class=3D"">because you asked to be alerted on&nbsp;<a =
+href=3D"https://www.tradingview.com/" target=3D"_blank" =
+style=3D"text-decoration: none; color: rgb(33, 150, 243); word-break: =
+break-word;" =
+class=3D"">TradingView.com</a></div></td></tr></tbody></table></td></tr></=
+tbody></table></td></tr><tr class=3D""><td height=3D"64" =
+bgcolor=3D"#ffffff" style=3D"font-size: 24px; line-height: 24px;" =
+class=3D""><br class=3D""></td></tr></tbody></table></div></div><div =
+class=3D""><br class=3D""></div></div></blockquote></div><br =
+class=3D""></body></html>=
+
+--Apple-Mail=_5968D89A-D9CA-4015-8690-EA6DBBFCA3BA--

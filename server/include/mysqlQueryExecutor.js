@@ -24,6 +24,7 @@ var mysql = require('mysql2'),
                 }
                 connection.query(query.sql, query.values, function (error, results) {
                     if (!error) {
+                        connection.release();
                         callback(null, results);
                     } else {
                         console.log("executeQuery error: ", error);
