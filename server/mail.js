@@ -54,21 +54,15 @@ var parseMessage = function(data){
     var strategyTitle = parseStrategy(messageBody)
 
     var findDirection = function(strategyTitle){
-	if(strategyTitle.match(/down/i)){
-		return('bearish');
-	}else if(strategyTitle.match(/up/i)){
-		return('bullish');
-	}else{
-		return('invalid_strategy');
-	}
+    	if(strategyTitle.match(/down/i)){
+    		return('bearish');
+    	}else if(strategyTitle.match(/up/i)){
+    		return('bullish');
+    	}else{
+    		return('invalid_strategy');
+    	}
     }
     var strategyDirection = findDirection(strategyTitle);
-
-    var returnObject = {
-        'ticker': ticker,
-	'strategyTitle': strategyTitle,
-	'direction': strategyDirection
-    }
 
     var sqlInsertStrategy = function(){
       // go through each ticker
