@@ -50,7 +50,7 @@ var parseMessage = function(data){
     	return(accumulator.join("").split('</td>')[0].trim());
     }
     var strategyTitle = parseStrategy(messageBody)
-    
+
     var findDirection = function(strategyTitle){
 	if(strategyTitle.match(/down/i)){
 		return('bearish');
@@ -61,7 +61,7 @@ var parseMessage = function(data){
 	}
     }
     var strategyDirection = findDirection(strategyTitle);
-    
+
     var returnObject = {
         'ticker': ticker,
 	'strategyTitle': strategyTitle,
