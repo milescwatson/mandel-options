@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS `excel`.`Strategies`;
 CREATE TABLE `excel`.`Strategies` (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   ticker VARCHAR(16),
+  exchange VARCHAR(16),
   strategyDirection VARCHAR(16),
   strategyParsedText VARCHAR(256),
   emailBodyText LONGTEXT,
@@ -21,6 +22,7 @@ CREATE TABLE `excel`.`MarketData` (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   ticker VARCHAR(16),
   EODDate DATE,
+  price FLOAT(32),
   createdDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   INDEX idx_ticker (ticker)
 )ENGINE=InnoDB;

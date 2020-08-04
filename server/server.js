@@ -9,7 +9,8 @@ var express = require('express'),
     mysql = require('./include/mysqlQueryExecutor'),
     mailServer = require('./mail'),
     user = require('./user'),
-    port = 3001;
+    port = 3001,
+    market = require('./market');
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}))
@@ -25,6 +26,9 @@ app.use(user.middleware);
 app.post('/login', user.login);
 app.get('/login-status', user.loginStatus);
 app.get('/logout', user.logout);
+
+app.get('/hr-company-info', market.getHumanCompanyName);
+
 
 app.get('/health', function(request, response, next) {
 	  response.send('{"status": "healthy"}');

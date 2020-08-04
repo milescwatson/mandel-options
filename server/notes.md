@@ -16,3 +16,7 @@ pw: A7uSNm4WAGATnoqszG7yhUSp
 
 QUAD
 2500+ per month
+
+
+When finished:
+comment out the bind-address value, to only allow localhost db access
