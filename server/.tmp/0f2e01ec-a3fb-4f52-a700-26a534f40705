@@ -1,0 +1,47 @@
+Received: by mail-pj1-f41.google.com with SMTP id c10so1965015pjn.1
+        for <strategyparser@excel.level4s.com>; Tue, 04 Aug 2020 12:07:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=milescwatson.com; s=google;
+        h=from:content-transfer-encoding:mime-version:subject:message-id:date
+         :to;
+        bh=oasfBPKsS5xUUC6QXSCFXnlZzfvnHec6tJ1GQgFxGNw=;
+        b=gV96ElRzsdJBlGd9IzJX0Tn/fvsuGgNPQMU1qPhkAZTHACIGM/Fd1v7y4vwOafAeOD
+         Yx6jxJ+GmG+z6Se3LsRuEec8Fry2VHvuLesUsWWyA/fnBPh0TOcWMfWOaF07JXd/3Vc6
+         1dQtd7803hvwP/E0JITSIux698SVrk2x9iDlYz6CuWRlNDnPHrZftiUNHBHZvqFCStKw
+         CBO2+TFKGLZTFIo6fnSAKhh8dtVvTyE7XKcZyjx/7bOAo6L1XmiQSE7PZRa1m9daayGi
+         mO9HdGKsmn6/LooEGKneJDEcFfjk4/40NJ4GPvsqZZqyao7+VCqsTpEMkgD4iZlTHo5d
+         OR4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:content-transfer-encoding:mime-version
+         :subject:message-id:date:to;
+        bh=oasfBPKsS5xUUC6QXSCFXnlZzfvnHec6tJ1GQgFxGNw=;
+        b=at2/8BmD42yFJyXLc/v71oesxuCPLtx17AMsGxWPdTmVTDtFrmQ5BEdLYiZVl1Pr8T
+         cRhyYXdKaetpz/eedEsP4nuQc5RMjE9z0Vn884ic7iCEYTGJI0U9rbFj4rP6sw4kAART
+         QmVQtmX4RnmqHiajsNwpBHpUx394Rc2Ty11a4hruuHrQJIjD+AB5ctGelz5G3cegck1y
+         wLk2Jp9JSZe27sXw7ERPp6jA3yMlkFHq/5NWxQEQcTlICaoSa3t4dli8AsI+zbDp6o8k
+         eGbTLdvLZMrao8fI56QzFgKlZRUvRbpeCVMZCVGHQLvUjBgmoodhXgMTRSQdsEeF4CZq
+         WzsQ==
+X-Gm-Message-State: AOAM531UabRS1yp1Uf95vsKi5Tko2exESuvDqIPszR1ogYd8tj5DcuNg
+	bv4VXbVJNN5TS69wR8jTh9/2/7Qrnjc+Ag==
+X-Google-Smtp-Source: ABdhPJyv5FfrXB9L+6Ob8HGwtWFIHEZwkKfRwL/ZiQ3Kik2vi5AwRZZiUcNDFUJ8LIFHHQ7PnH9WAg==
+X-Received: by 2002:a17:90a:ac04:: with SMTP id o4mr5677729pjq.130.1596568075648;
+        Tue, 04 Aug 2020 12:07:55 -0700 (PDT)
+Return-Path: <miles@milescwatson.com>
+Received: from [192.168.1.147] (c-76-126-103-172.hsd1.ca.comcast.net. [76.126.103.172])
+        by smtp.gmail.com with ESMTPSA id k4sm3583222pjg.48.2020.08.04.12.07.54
+        for <strategyparser@excel.level4s.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 04 Aug 2020 12:07:54 -0700 (PDT)
+From: Miles Watson <miles@milescwatson.com>
+Content-Type: text/plain;
+	charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.1\))
+Subject: 
+Message-Id: <CE062D75-6F72-4761-AC27-501F6A91EF95@milescwatson.com>
+Date: Tue, 4 Aug 2020 12:07:53 -0700
+To: strategyparser@excel.level4s.com
+X-Mailer: Apple Mail (2.3608.120.23.2.1)
+
+asdfdfs

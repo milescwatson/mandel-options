@@ -1,0 +1,44 @@
+.underlyingItemHeader {
+  width: 100%;
+  border: 1px solid #ffffff2e;
+  border-radius: 2px;
+  background-color: #989696;
+  padding: .6%;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.underlyingItemHeader:hover {
+  background-color: #0096D6
+}
+.underlyingItemHeader>* {
+  display: inline;
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.ticker {
+  display: inline-block;
+  width: 50%
+}
+.toggleButton {
+  float:right;
+}
+
+.expandedContentU {
+  padding: .6%;
+  min-height: 100px;
+  background-color: gray;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.direction{
+  float: right;
+}
+.underlyingItem {
+  margin-left: 100px;
+}
+
+.btn {
+  margin: 2px;
+}

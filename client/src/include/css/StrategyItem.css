@@ -1,0 +1,38 @@
+.strategyItemHeader {
+  width: 100%;
+  border: 1px solid #ffffff2e;
+  border-radius: 2px;
+  background-color: #737373;
+  padding: .6%;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.strategyItemHeader:hover {
+  background-color: #0096D6
+}
+.strategyItemHeader>* {
+  display: inline;
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.stratTitle {
+  display: inline-block;
+  width: 50%
+}
+.toggleButton {
+  float:right;
+}
+
+.time {
+  margin-left: 20%;
+}
+.expandedContentS {
+  background-color: gray;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.direction{
+  float: right;
+}

@@ -40,6 +40,7 @@ var middleware = function(request, response, next){
   if(!request.session.loggedIn){
     request.session.loggedIn = {}
   }
+
   next();
 
 }

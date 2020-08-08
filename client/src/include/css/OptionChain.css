@@ -1,0 +1,60 @@
+.table {
+  color: white;
+}
+
+td {
+  text-align: center;
+}
+
+.strikeContainer {
+  margin: 1px 0px 1px 0px;
+}
+
+.strikeHeader {
+  background-color: #a7a7a7;
+  width: 100%;
+  padding: .5%;
+  border: 0px solid #43484d14;
+  border-radius: 2px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.strikeHeader:hover {
+  background-color: #0096D6
+}
+
+.optionChainHeader>* {
+  display: inline
+}
+.dateSelect {
+  float: right;
+}
+
+.optionChainHeader {
+  border-bottom: 1px solid white;
+}
+
+.expandedContentChain {
+  min-height: 10px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+.toggleButton {
+  float:right;
+}
+.labelNoBorder td {
+  border-width: 0px
+}
+table {
+  max-width: 97.5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.optionChain {
+  padding: .6%;
+  background-color: #989696;
+}

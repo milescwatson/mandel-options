@@ -17,7 +17,7 @@ var LoginPage = function(){
       <form method="POST" action="/login">
         <div className="form-group">
           <label htmlFor="pw">Password: </label>
-          <input name="password" type="password" className="form-control" id="pw" placeholder="Password" required />
+          <input autoComplete="password" name="password" type="password" className="form-control" id="pw" placeholder="Password" required />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>

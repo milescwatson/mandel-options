@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar, DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
 import globals from './include/globals.js';
 
@@ -9,23 +9,6 @@ var logout = function(){
   });
   window.location = '/';
 }
-
-var checkLoginStatus = function(){
-  var loginStatus = 0;
-  xhr.json('/login-status', 'GET', {}, function(error, response){
-    if(window.location.pathname !== '/login'){
-      if(error){
-        window.location = '/login?error-auth-req-error';
-      }
-      const res = JSON.parse(response);
-      if(res.status !== 1){
-        window.location = '/login?logged-out';
-      }
-    }
-
-  })
-}
-checkLoginStatus();
 
 function Header(props){
   return(
@@ -43,10 +26,7 @@ function Header(props){
               id="dropdown-menu-align-right"
               variant="secondary"
               title={globals.userName}
-              id="dropdown-menu-align-right"
             >
-            <Dropdown.Item eventKey="1">Settings</Dropdown.Item>
-            <Dropdown.Divider />
             <Dropdown.Item eventKey="2" onClick={()=>{logout()}}>Logout</Dropdown.Item>
 
             </DropdownButton>

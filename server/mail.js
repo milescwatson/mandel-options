@@ -11,13 +11,9 @@ var startMailServer = function(){
 
 mailin.on('message', function (connection, data, content) {
   const verifiedAddress = 'noreply@tradingview.com';
-  const fromAddress = data.from.address;
+  const fromAddress = data.from;
   const toAddress = data.to[0].address;
-
-  if(toAddress.split('@')[0] === 'strategyparser'){
-	  parseMessage(data);
-  }
-
+  parseMessage(data);
 });
 }
 
@@ -53,7 +49,7 @@ var parseMessage = function(data){
     }
 
     var getStrategyTitle = function(messageBody){
-    	const regex = /\$\$.[^<]*/
+    	const regex = /\$\$.[^<.]*/
     	var strategyTitle = messageBody.match(regex)[0]
     	return(strategyTitle)
     }

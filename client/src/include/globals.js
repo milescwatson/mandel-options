@@ -1,5 +1,5 @@
 var globals = {
-  siteName: 'Option Strategy Analysis',
+  siteName: 'Excel Option Analysis',
   userName: 'Scott Mandel'
 }
 

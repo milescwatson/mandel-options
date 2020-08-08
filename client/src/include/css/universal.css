@@ -1,8 +1,64 @@
 body {
-  background-color: #43484D;
+  background-color: #262626;
   color: white;
+  min-width: 800px;
 }
 
 .app {
   padding: 2%;
 }
+
+.Ticker {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 30%;
+  overflow: hidden;
+}
+
+.title {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  line-height: 3pt;
+  max-width: 60%;
+}
+
+.title>p {
+  font-size: 12pt
+}
+
+.tickerFont {
+  font-family: Arial;
+}
+
+.priceInfo {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-left: 2%;
+
+}
+.priceInfo>p {
+  padding: 0px;
+  margin-bottom: 0rem;
+}
+.priceInfo>h5 {
+  padding: 0px;
+  margin-bottom: 0rem;
+}
+
+.companyDescription {
+  width: 300px
+}
+
+a {
+
+}
+/* .Ticker>* {
+  display: inline;
+}
+
+.Ticker .priceInfo {
+  float: right;
+} */
