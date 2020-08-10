@@ -7,6 +7,11 @@
   vertical-align: middle;
   cursor: pointer;
 }
+
+.pointerCursor {
+  cursor: pointer;
+}
+
 .underlyingItemHeader:hover {
   background-color: #0096D6
 }

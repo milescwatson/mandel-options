@@ -76,13 +76,13 @@ var OptionChain = function(props){
     var style = {};
     if(side === "calls"){
       if(strikePrice < props.price){
-        style["background-color"] = "rgb(175 175 175)";
+        style["backgroundColor"] = "rgb(175 175 175)";
       }
     }
 
     if(side === "puts"){
       if(strikePrice > props.price){
-        style["background-color"] = "rgb(175 175 175)";
+        style["backgroundColor"] = "rgb(175 175 175)";
       }
     }
 
@@ -93,12 +93,12 @@ var OptionChain = function(props){
       <tbody>
       {Object.keys(marketData).sort().map(function(strikePrice, strikeRowIdx){
         return(
-          <tr>
+          <tr key = {strikeRowIdx}>
             {
             displaySettings.metrics.map(function(metric, metricIdx){
               if(displaySettings.calls){
                 return(
-                  <td style={generateStyle(strikePrice, "calls")}> {marketData[strikePrice].callSide[metric].toFixed(2)}</td>
+                  <td key={'c_'+metricIdx} style={generateStyle(strikePrice, "calls")}> {marketData[strikePrice].callSide[metric].toFixed(2)}</td>
                 )
               }else{
                 return ''
@@ -110,7 +110,7 @@ var OptionChain = function(props){
             displaySettings.metrics.map(function(metric, metricIdx){
               if(displaySettings.puts){
                 return(
-                  <td style={generateStyle(strikePrice, "puts")}>{marketData[strikePrice].putSide[metric].toFixed(2)}</td>
+                  <td key={'p_'+metricIdx} style={generateStyle(strikePrice, "puts")}>{marketData[strikePrice].putSide[metric].toFixed(2)}</td>
                 )
               }else{
                 return ''
@@ -119,7 +119,6 @@ var OptionChain = function(props){
             }
           </tr>
         )
-
       })}
       </tbody>
     )

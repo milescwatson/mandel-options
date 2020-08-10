@@ -50,7 +50,6 @@ var executeQueryWithConnect = function(query, callback){
   });
 }
 
-
 // Executes a stored procedure and returns an array of result sets.
 exports.executeCallableStatement = function (storedProcedure, callback) {
     executeQuery(storedProcedure, function (error, results) {

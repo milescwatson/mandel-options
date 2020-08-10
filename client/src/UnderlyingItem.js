@@ -21,6 +21,9 @@ function UnderlyingItem(props) {
     desc: '',
     change: ''
   });
+  const [historicalLoaded, setHistoricalLoaded] = useState(false);
+  const [marketData, setMarketData] = useState(null);
+
 
   var getUnderlyingInfo = function(){
     if(props.id !== undefined){
@@ -38,60 +41,102 @@ function UnderlyingItem(props) {
         }
       });
     }
+
+    if(info.ticker !== undefined && info.ticker.length >= 1){
+      mFetch.getTextJSON(`/get-historical/${info.ticker}`, function(error, result){
+        setMarketData(result);
+        setHistoricalLoaded(true);
+      });
+    }
+
   }
 
-  useEffect(getUnderlyingInfo, [props.id]);
+  useEffect(getUnderlyingInfo, [props.id, info.ticker]);
 
   var QuoteHistory = function(props){
-    const [historicalLoaded, setHistoricalLoaded] = useState(false);
-    const [marketData, setMarketData] = useState(null);
-    var stockHistory = function(){
+
+    var QuoteTable = function(){
+      const [expanded, setExpanded] = useState(false);
+
+      if(marketData.length === 0){
+
+        return(
+          <>
+          <h5>Quote History </h5>
+          <p>Quote history unavailable for {info.ticker}</p>
+          </>
+        )
+
+      }
       return(
         <>
         <h5>Quote History </h5>
-        <Table>
-          <tr>
-            <td>Date</td>
-            <td>Price</td>
-          </tr>
+        <Table bordered size="sm">
+          <tbody>
+            <tr>
+              <td>Date</td>
+              <td>Price</td>
+              <td>Change</td>
+            </tr>
+              {
+              marketData.map(function(val, idx){
+                var style = {};
+
+                var prefix = '';
+
+                if(val.change >= 0){
+                  style.backgroundColor = "#BDD5AC";
+                  if(val.change !== 0){
+                    prefix = "+";
+                  }
+                }else{
+                  style.backgroundColor = "#DF9C9B";
+                }
+
+                if(expanded){
+                  return(
+                    <tr key={idx}>
+                      <td>{moment(val.date, "YYYY-MM-DD").format("MMM D").toString()}</td>
+                      <td>{val.close}</td>
+                      <td style={style}>{prefix}{val.change}</td>
+                    </tr>
+                  );
+                }else{
+                  if(idx < 14){
+                    return(
+                      <tr key={idx}>
+                        <td>{moment(val.date, "YYYY-MM-DD").format("MMM D").toString()}</td>
+                        <td>{val.close}</td>
+                        <td style={style}>{prefix}{val.change}</td>
+                      </tr>
+                    )
+                  }
+                }
+
+              })
+              }
+              {!expanded ? (<tr><td colSpan="4"><Icon icon={'small-plus'} intent={"primary"} iconSize={30} color="white" /><a onClick={()=>{setExpanded(true)}} style={{color: "white"}} className="pointerCursor">Load more days</a></td></tr>) : null}
+          </tbody>
         </Table>
         </>
       )
     }
-    var getMarketData = function(){
-      if(props.symbol !== undefined){
-        mFetch.getTextJSON(`/get-historical/${props.symbol}`, function(error, result){
-          setMarketData(result);
-          setHistoricalLoaded(true);
-        });
-      }
-    }
-
-    useEffect(getMarketData, [props.symbol])
 
     if(historicalLoaded){
       return(
         <>
-        <h5>Quote History</h5>
-        <p>Market data pulled at 4:05PM every weekday.</p>
+        <QuoteTable />
         </>
       )
     }else{
       return(
-        <>
-        <h5>Quote History</h5>
-        <p>Loading Historical Data</p>
-        </>
+        <><h5>Quote History</h5>
+        <p>Loading Historical Data</p></>
       )
     }
   }
 
   var Ticker = function(props){
-    // var symbolDescription = {
-    //   display: "block",
-    //   width: "280px",
-    //   color: "red"
-    // }
 
     var FormatChangeAndPrice = function(){
       var style = {};
@@ -104,8 +149,8 @@ function UnderlyingItem(props) {
       }
       return(
         <>
-        <h5 style={style}> {info.price} </h5>
-        <p style={style}>{prefix} {info.change}</p>
+        <h5 style={style}> {isNaN(info.price) ? "N/A" : info.price} </h5>
+        <p style={style}>{prefix} {isNaN(info.change) ? "N/A" : info.change}</p>
         </>
       )
     }
@@ -191,12 +236,11 @@ function UnderlyingItem(props) {
                 />
               </div>
               <div className="col-3">
-                <h5> Alert Details</h5>
+                <h4> Alert Details</h4>
+                <p><b>Strategy Title:</b> {info.strategyTitle.split('$$_')[1]}</p>
+                <QuoteHistory />
                 <Button variant="primary" target="_blank" href={`http://www.tradingview.com/symbols/${info.ticker}`}>TradingView Quote</Button>
                 <Button className="deleteButton" variant="danger" onClick={() => {deleteUnderlying()}}>Delete This Alert</Button>
-                <QuoteHistory
-                  symbol={info.ticker}
-                />
               </div>
             </div>
             </div>

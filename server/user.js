@@ -11,7 +11,7 @@ var login = function(request, response){
     request.session.loggedIn = true;
   }
 
-  response.redirect('/?login')
+  response.redirect('/')
 }
 
 var loginStatus = function(request, response){

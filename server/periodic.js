@@ -3,8 +3,11 @@ const log = require('why-is-node-running') // should be your first require
 var apiCredentials = require('./include/apiCredentials'),
     mysql = require("./include/mysqlQueryExecutor"),
     fetch = require('node-fetch'),
-    _ = require('lodash');
-    
+    _ = require('lodash'),
+    validOptionSymbolsFile = require('./include/marketData/validOptionSymbols.json'),
+    mFetch = require('./include/mFetch'),
+    fs = require('fs');
+
 // PRIVATE
 var getAllActiveTickers = function(callback){
   const query = {
@@ -49,4 +52,15 @@ var cacheEODStockQuotes = function(callback){
     }
   });
 }
+
+var getValidOptionSymbols = function(){
+  mFetch.getTextJSON(`https://cloud.iexapis.com/stable/ref-data/options/symbols?token=${apiCredentials.iex.publishable}`, function(error, result){
+    if(!error){
+      fs.writeFileSync('./include/marketData/validOptionSymbols.json', JSON.stringify(result));
+    }
+  });
+}
+
+getValidOptionSymbols();
+
 cacheEODStockQuotes((error, data)=>{});

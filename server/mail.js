@@ -1,5 +1,4 @@
 var mailin = require('mailin'),
-    parse5 = require('parse5'),
     fs = require('fs'),
     mysql = require("./include/mysqlQueryExecutor");
 
@@ -65,26 +64,32 @@ var parseMessage = function(data){
     		return('invalid_strategy');
     	}
     }
-    var strategyDirection = findDirection(strategyTitle);
+    const strategyTitle = getStrategyTitle(messageBody);
+
+    const strategyDirection = findDirection(strategyTitle);
 
     var sqlInsertStrategy = function(){
       // go through each ticker
-      const strategyTitle = getStrategyTitle(messageBody),
-            direction = findDirection(strategyTitle),
+      const direction = findDirection(strategyTitle),
             tickerAndExchangeObjects = getTickerAndExchanges(messageBody);
 
       for (var i = 0; i < tickerAndExchangeObjects.length; i++) {
-        const insertQuery = {
-          sql: 'INSERT INTO Strategies(`ticker`, `exchange`, `strategyDirection`, `strategyParsedText`, `emailBodyText`) VALUES(?,?,?,?,?)',
-          values: [tickerAndExchangeObjects[i].ticker, tickerAndExchangeObjects[i].exchange, direction, strategyTitle, messageBody]
+        const insertUnderlyingProc = {
+          sql: 'CALL insertUnderlying(?,?,?,?,?)',
+          values: [tickerAndExchangeObjects[i].ticker, tickerAndExchangeObjects[i].exchange, direction, strategyTitle, '']
         }
-        mysql.query(insertQuery, function(error, result){
+        // const insertQuery = {
+        //   sql: 'INSERT INTO Strategies(`ticker`, `exchange`, `strategyDirection`, `strategyParsedText`, `emailBodyText`) VALUES(?,?,?,?,?)',
+        //   values: [tickerAndExchangeObjects[i].ticker, tickerAndExchangeObjects[i].exchange, direction, strategyTitle, messageBody]
+        // }
+        mysql.query(insertUnderlyingProc, function(error, result){
           if(error){
-            console.log('error: could not add parsed strategy to database: ', error)
+            console.log('error: could not add parsed strategy to database: ', error);
           }else{
-            console.log('success, result = ', result);
+            console.log(`success, added ${tickerAndExchangeObjects[i].ticker}= `, result);
           }
         });
+
       }
     }
     sqlInsertStrategy();

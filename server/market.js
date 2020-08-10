@@ -5,6 +5,7 @@ var apiCredentials = require('./include/apiCredentials'),
     mysql = require('./include/mysqlQueryExecutor'),
     moment = require('moment'),
     apiCache = require('./apiCache'),
+    validOptionSymbolsFile = require('./include/marketData/validOptionSymbols.json'),
     apiBaseUrl = "https://cloud.iexapis.com/stable/";
 
 var getHQuote = function(request, response){
@@ -119,20 +120,29 @@ var getIndividualUnderlyingInfo = function(request, response){
 
 var getHistorical = function(request, response){
   const symbol = request.params.symbol;
-  const query = {
-    sql: 'SELECT price, createdDateTime FROM `MarketData` WHERE `ticker` = ? ORDER BY `createdDateTime` ASC',
-    values: [symbol]
-  }
-  mysql.query(query, function(error, result){
+
+  mFetch.getTextJSON(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/1m?token=${apiCredentials.iex.publishable}&sort=desc&includeToday=true`, function(error, result){
     if(error){
-      response.send('error');
+      response.send("error");
     }
-    response.send(result);
+    var ret = [];
+    for (var i = 0; i < result.length; i++) {
+      var obj = {};
+      obj.date = result[i].date;
+      obj.close = result[i].close;
+      obj.change = result[i].change;
+      obj.changePercent = result[i].changePercent
+      obj.label = result[i].label;
+      ret.push(obj);
+    }
+    response.send(ret);
   });
 }
 
-var getHistoricalBlank = function(request, response){
-  response.send("[]")
+var symbolHasOptions = function(request, response){
+  const symbol = (request.params.symbol).toUpperCase();
+  var hasOptions = Object.keys(validOptionSymbolsFile).includes(symbol);
+  response.send(hasOptions);
 }
 
 exports.getHQuote = getHQuote;
@@ -142,4 +152,4 @@ exports.isOptionDataAvailable = isOptionDataAvailable;
 exports.quote = quote;
 exports.getIndividualUnderlyingInfo = getIndividualUnderlyingInfo;
 exports.getHistorical = getHistorical;
-exports.getHistoricalBlank = getHistoricalBlank;
+exports.symbolHasOptions = symbolHasOptions;

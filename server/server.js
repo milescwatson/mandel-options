@@ -9,9 +9,10 @@ var express = require('express'),
     mysql = require('./include/mysqlQueryExecutor'),
     mailServer = require('./mail'),
     user = require('./user'),
-    port = 3001,
+    port = 80,
     market = require('./market'),
-    strategy = require('./strategy');
+    strategy = require('./strategy'),
+    mFetch = require('./include/mFetch');
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}))
@@ -43,11 +44,16 @@ app.get('/get-data-by-month/:symbol/:month', market.getDataByMonth);
 app.get('/is-option-data-available/:symbol', market.isOptionDataAvailable)
 app.get('/get-underlying-info/:id', market.getIndividualUnderlyingInfo);
 app.get('/get-historical/:symbol', market.getHistorical);
-app.get('/get-historical/', market.getHistoricalBlank);
-
+app.get('/has-options/:symbol', market.symbolHasOptions);
 
 app.get('/health', function(request, response, next) {
-	  response.send('{"status": "healthy"}');
+    mFetch.getText('http://cloud.milescwatson.com:6060/val/', function(error, result){
+      if(result === '1'){
+        response.send('1');
+      }else{
+        response.send('0');
+      }
+    });
 });
 
 app.use('/', express.static('../client/build'));

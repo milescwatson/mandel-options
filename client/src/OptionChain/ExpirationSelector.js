@@ -61,8 +61,6 @@ var ExpirationSelector = function(props){
   }
 
   var fetchStrikeDates = function(){
-    console.log('fetchStrikeDates symbol = ', props.symbol);
-
     if(props.symbol.length >= 1 && props.symbol !== undefined){
       mFetch.getTextJSON(`/get-strike-dates/${props.symbol}`, function(error, result){
         if(error){

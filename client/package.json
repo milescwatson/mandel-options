@@ -33,5 +33,5 @@
     ]
   },
   "proxy": "http://localhost:3001",
-  "homepage": "http://excel.level4s.com:3001"
+  "homepage": "http://excel.level4s.com"
 }

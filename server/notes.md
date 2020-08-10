@@ -20,3 +20,13 @@ QUAD
 
 When finished:
 comment out the bind-address value, to only allow localhost db access
+
+
+## Call:
+- duplicate ticker handling
+- change Password
+- get IEXcloud account
+- for quoteHistory, what date format do you like?
+- threshhold for hiding rows
+- End date of my IEX subscription
+- IEX does not provide data for all 
