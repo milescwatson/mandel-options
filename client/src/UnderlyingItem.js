@@ -97,8 +97,8 @@ function UnderlyingItem(props) {
                   return(
                     <tr key={idx}>
                       <td>{moment(val.date, "YYYY-MM-DD").format("MMM D").toString()}</td>
-                      <td>{val.close}</td>
-                      <td style={style}>{prefix}{val.change}</td>
+                      <td>{val.close.toFixed(2)}</td>
+                      <td style={style}>{prefix}{val.change.toFixed(2)}</td>
                     </tr>
                   );
                 }else{
@@ -106,8 +106,8 @@ function UnderlyingItem(props) {
                     return(
                       <tr key={idx}>
                         <td>{moment(val.date, "YYYY-MM-DD").format("MMM D").toString()}</td>
-                        <td>{val.close}</td>
-                        <td style={style}>{prefix}{val.change}</td>
+                        <td>{val.close.toFixed(2)}</td>
+                        <td style={style}>{prefix}{val.change.toFixed(2)}</td>
                       </tr>
                     )
                   }

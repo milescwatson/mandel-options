@@ -121,7 +121,7 @@ var getIndividualUnderlyingInfo = function(request, response){
 var getHistorical = function(request, response){
   const symbol = request.params.symbol;
 
-  mFetch.getTextJSON(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/1m?token=${apiCredentials.iex.publishable}&sort=desc&includeToday=true`, function(error, result){
+  mFetch.getTextJSON(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/1m?token=${apiCredentials.iex.publishable}&sort=desc`, function(error, result){
     if(error){
       response.send("error");
     }
@@ -145,6 +145,13 @@ var symbolHasOptions = function(request, response){
   response.send(hasOptions);
 }
 
+var symbolHasOptionsLocal = function(symbol){
+  var hasOptions = false;
+  symbol = symbol.toUpperCase();
+  hasOptions = Object.keys(validOptionSymbolsFile).includes(symbol);
+  return hasOptions;
+}
+
 exports.getHQuote = getHQuote;
 exports.getStrikes = getStrikes;
 exports.getDataByMonth = getDataByMonth;
@@ -153,3 +160,4 @@ exports.quote = quote;
 exports.getIndividualUnderlyingInfo = getIndividualUnderlyingInfo;
 exports.getHistorical = getHistorical;
 exports.symbolHasOptions = symbolHasOptions;
+exports.symbolHasOptionsLocal = symbolHasOptionsLocal;

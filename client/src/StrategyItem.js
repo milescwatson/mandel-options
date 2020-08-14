@@ -30,7 +30,7 @@ var StrategyItem = function(props){
       }
     });
   }
-
+  
   useEffect(generateUnderlying, [props]);
 
   var expandedContentDynamicStyle = {

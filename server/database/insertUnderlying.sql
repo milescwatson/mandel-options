@@ -27,7 +27,7 @@ CREATE OR REPLACE PROCEDURE insertUnderlying (
    IF (identicalTickerCount > 0 AND (identicalSymbolStrategyTitle = in_strategyParsedText))
    THEN
     SET identicalSymbolID = (select id From Strategies WHERE ticker=in_symbol ORDER BY CreatedDateTime ASC LIMIT 1);
-    UPDATE Strategies SET createdDateTime=NOW() WHERE id=identicalSymbolID;
+    -- UPDATE Strategies SET createdDateTime=NOW() WHERE id=identicalSymbolID;
    ELSE
     INSERT INTO Strategies (ticker, exchange, strategyDirection, strategyParsedText, emailBodyText)
     VALUES(in_symbol, in_exchange, in_strategyDirection, in_strategyParsedText, in_emailBodyText);

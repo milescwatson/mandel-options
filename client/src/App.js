@@ -32,11 +32,11 @@ class App extends React.Component {
         } catch (e) {
           this.setState({loginStatus: false})
         }
-        mFetch.getText('/health', (error, result)=>{
-          if(result !== '1'){
-            this.setState({loginStatus: false})
-          }
-        });
+        // mFetch.getText('/health', (error, result)=>{
+        //   if(result !== '1'){
+        //     this.setState({loginStatus: false})
+        //   }
+        // });
     }.bind(this))
   }.bind(this);
 
@@ -68,7 +68,7 @@ class App extends React.Component {
     this.checkLoginStatus();
     // this.getStrategies();
     this.generateStrategyItems();
-
+    // setInterval(this.generateStrategyItems, 5000);
   }.bind(this);
 
   AppOrLogin = function(){

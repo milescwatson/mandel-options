@@ -60,12 +60,12 @@ var getUniqueStrategies = function(request, response){
           uniqueStrategies[strategyTitleItr].push(result[i].id);
         }
       }
+      
       response.send(JSON.stringify(uniqueStrategies));
     }
   });
 
 }
-
 
 exports.deleteStrategy = deleteStrategy;
 exports.getStrategyIDs = getStrategyIDs;

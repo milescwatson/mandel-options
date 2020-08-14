@@ -47,3 +47,7 @@
 .btn {
   margin: 2px;
 }
+
+.priceInfo {
+  font-weight: bold;
+}

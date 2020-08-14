@@ -5,8 +5,6 @@ var fs = require('fs'),
 var login = function(request, response){
   const password = credentials.password;
   const receivedPassword = request.body.password;
-  console.log('rp, pw', password === receivedPassword);
-
   if(receivedPassword === password){
     request.session.loggedIn = true;
   }
