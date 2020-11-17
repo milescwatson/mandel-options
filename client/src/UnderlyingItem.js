@@ -24,7 +24,6 @@ function UnderlyingItem(props) {
   const [historicalLoaded, setHistoricalLoaded] = useState(false);
   const [marketData, setMarketData] = useState(null);
 
-
   var getUnderlyingInfo = function(){
     if(props.id !== undefined){
       mFetch.getTextJSON(`/get-underlying-info/${props.id}`, function(error, response){
@@ -38,14 +37,15 @@ function UnderlyingItem(props) {
             change: parseFloat(response.change).toFixed(2),
             price: parseFloat(response.price).toFixed(2)
           });
+          mFetch.getTextJSON(`/get-historical/${response.symbol}`, function(error, result){
+            if(error){
+              setMarketData([])
+            }else{
+              setMarketData(result);
+              setHistoricalLoaded(true);
+            }
+          });
         }
-      });
-    }
-
-    if(info.ticker !== undefined && info.ticker.length >= 1){
-      mFetch.getTextJSON(`/get-historical/${info.ticker}`, function(error, result){
-        setMarketData(result);
-        setHistoricalLoaded(true);
       });
     }
 
@@ -57,16 +57,13 @@ function UnderlyingItem(props) {
 
     var QuoteTable = function(){
       const [expanded, setExpanded] = useState(false);
-
-      if(marketData.length === 0){
-
+      if(marketData.length === 0 || marketData.status === 'error'){
         return(
           <>
           <h5>Quote History </h5>
           <p>Quote history unavailable for {info.ticker}</p>
           </>
         )
-
       }
       return(
         <>
@@ -97,8 +94,8 @@ function UnderlyingItem(props) {
                   return(
                     <tr key={idx}>
                       <td>{moment(val.date, "YYYY-MM-DD").format("MMM D").toString()}</td>
-                      <td>{val.close}</td>
-                      <td style={style}>{prefix}{val.change}</td>
+                      <td>{val.close.toFixed(2)}</td>
+                      <td style={style}>{prefix}{val.change.toFixed(2)}</td>
                     </tr>
                   );
                 }else{
@@ -106,8 +103,8 @@ function UnderlyingItem(props) {
                     return(
                       <tr key={idx}>
                         <td>{moment(val.date, "YYYY-MM-DD").format("MMM D").toString()}</td>
-                        <td>{val.close}</td>
-                        <td style={style}>{prefix}{val.change}</td>
+                        <td>{val.close.toFixed(2)}</td>
+                        <td style={style}>{prefix}{val.change.toFixed(2)}</td>
                       </tr>
                     )
                   }
@@ -200,7 +197,8 @@ function UnderlyingItem(props) {
   }
 
   var formatDate = function(){
-    return(moment(info.createdDateTime, "YYYY-MM-DD HH:mm:ss").format('M/D, h:mma').toString())
+    var mTime = moment(info.createdDateTime, "YYYY-MM-DD HH:mm:ss").utc().utcOffset(-12).format('M/D, h:mm a').toString();
+    return(mTime);
   }
 
   var expandedContentDynamicStyle = {

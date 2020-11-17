@@ -1,0 +1,27 @@
+Message-ID: <10159ab7587693b779074a072c23bb0d@gmail.com>
+From: <westnets2@gmail.com>
+To: <westnets2@gmail.com>
+Subject: Valid SMTP 157.245.94.27
+Date: Thu, 03 Sep 2020 18:17:31 +0530
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="183def1827a9b8ad0c83b94a0004a0e0"
+
+This is a multi-part message in MIME format.
+
+--183def1827a9b8ad0c83b94a0004a0e0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+157.245.94.27:25 | no auth |  SSL: False | Hostname: 
+
+--183def1827a9b8ad0c83b94a0004a0e0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+157.245.94.27:25 | no auth |  SSL: False | Hostname: 
+
+--183def1827a9b8ad0c83b94a0004a0e0--
+

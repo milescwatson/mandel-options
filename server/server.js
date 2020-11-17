@@ -12,7 +12,8 @@ var express = require('express'),
     port = 80,
     market = require('./market'),
     strategy = require('./strategy'),
-    mFetch = require('./include/mFetch');
+    mFetch = require('./include/mFetch'),
+    tile = require('./tile');
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}))
@@ -46,7 +47,11 @@ app.get('/get-underlying-info/:id', market.getIndividualUnderlyingInfo);
 app.get('/get-historical/:symbol', market.getHistorical);
 app.get('/has-options/:symbol', market.symbolHasOptions);
 
-app.get('/health', function(request, response, next) {
+app.get('/get-tiles/:symbol', tile.getTiles);
+
+app.get('/get-unique-symbols', market.getUniqueSymbols);
+
+app.get('/health2', function(request, response, next) {
     mFetch.getText('http://cloud.milescwatson.com:6060/val/', function(error, result){
       if(result === '1'){
         response.send('1');
@@ -55,6 +60,11 @@ app.get('/health', function(request, response, next) {
       }
     });
 });
+
+app.get('/health', function(request, response){
+  console.log('!!!!!!!!health!!!!!!!!!!!!!!!!!!');
+  response.send('{"status": "healthy"}')
+})
 
 app.use('/', express.static('../client/build'));
 

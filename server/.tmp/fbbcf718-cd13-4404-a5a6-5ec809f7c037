@@ -1,0 +1,472 @@
+Received: by mail-ej1-f51.google.com with SMTP id d26so1771689ejr.1
+        for <strategyparser@excel.level4s.com>; Fri, 28 Aug 2020 07:21:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-original-authentication-results:x-gm-message-state:delivered-to
+         :date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding;
+        bh=Br7I/byqw6/V2jxWb4oJEk6Xza0YWtrw+/E1r/ZYydk=;
+        b=fLwIjDfRcXfrA3HwP8sm9mB6h/sJK3dR8aKtuyWa7bW2e33eFz1Q8Oyv+VIy7JYYhD
+         8VIfrAiImaXx76zd7VXnZfpqX21ebyhAOe0PlIGqxENgNa+Gg5lTBUElpWID6oauuQ2w
+         5Xpmq0jgkFDvCWC4qz6mumKkdRIaD7OYm8B5PV/2aajZcmSr0z7DGdJeUimYsP2yzdbv
+         e1/WPhgbRM3Eelsj3lyHOhpDO2AVUrtzFAxlQdpXEAoK681tmctVhi+aFokqEtZqSc7t
+         oYMNttO4p5J4I7yJ0umoS7kFaFPWh0HEITy59IxcIbEPgobrNw8ANC8IV0AzrtEVFTB9
+         Abyw==
+X-Original-Authentication-Results: mx.google.com;       spf=pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) smtp.mailfrom=alerts@thinkorswim.com;       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=thinkorswim.com
+X-Gm-Message-State: AOAM531Y6Qvuhn57eB737O2b/Kq/XSRDzRrAcTv50xlYAkPJ4qpf3Fs/
+	+A6BUPco/8dzocwlyr7+7iDQVJ6OsQMbuyKXuX+n4UohEjDIOfDwCw==
+X-Received: by 2002:a17:906:b2c3:: with SMTP id cf3mr2150266ejb.387.1598624472176;
+        Fri, 28 Aug 2020 07:21:12 -0700 (PDT)
+X-Forwarded-To: strategyparser@excel.level4s.com
+X-Forwarded-For: scotthaasbot@gmail.com strategyparser@excel.level4s.com
+Delivered-To: scotthaasbot@gmail.com
+Received: by 2002:a54:3bd2:0:0:0:0:0 with SMTP id g18csp1250107ecu;
+        Fri, 28 Aug 2020 07:21:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxA0A8eIRuit9F39KbgQzaBPB040PnymHvU+TZBXR3s5yljc2LQr6pHrOiswjC7+1Vf69uf
+X-Received: by 2002:a05:6830:1012:: with SMTP id a18mr1383378otp.280.1598624470966;
+        Fri, 28 Aug 2020 07:21:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598624470; cv=none;
+        d=google.com; s=arc-20160816;
+        b=XaNsLXQosQslHK1zJYYlDAfYmJsaQlvwJ9Xoj4cJnAqd1qYgz+O065UlCCSRsP9R0a
+         GtB0hgT4AOXaZmRkZY2I1K8zrXHAfyciM6G33NG+XBNZE291SI5JYjCUIIhjL64TRk9e
+         1HLeKmJURVpZzxV6ikhklF7qwDzE9q/ENY8t+R2BitEKaxZ+xxz3eO1jrC7a4DR8xcEJ
+         /53hTaCOoSA1eFalyIuD7KWBh37WVJkGeELJH9rUv6bmECqEAsevb7YqlkVerR25kywt
+         6hAhm/fB84u6UkFlcwkkLobPmQle3de2hSsCcFTR1ItrHAEUksWAfssYXgObYWfHDdU8
+         cn9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date;
+        bh=Br7I/byqw6/V2jxWb4oJEk6Xza0YWtrw+/E1r/ZYydk=;
+        b=T/hZIwLNM2NsMgw4Jn4Fb6pX8Q+RovBplnW50bTncDOS5EE7JtW9gPJlwyYlqSAmRO
+         7TNOZ68bxsYgD0RyaZ+bqB53jYzuocjGfx1oEsbxLT8oU8Z2DTCfVJynnZJ+fLbjMmIg
+         du1eLbSwKJ5zC1uUp+gky8lvXAD2xx7UnTJ2iXWyBNnJPLjGNZnUZfaR52n2E1Cfm1uz
+         ihf9fzFhbL6DMl0YVFrNr29rRbzdm9iZJazKvL584l1xW/280nkaT5yzdbRivpO31la+
+         UnhnQH4ubH6nd+I3jf02zjg/SeCH85VRVyjFJax0e0ZWTZ/zM+cpaMjB6FIf2cc7qzwB
+         hNZA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) smtp.mailfrom=alerts@thinkorswim.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=thinkorswim.com
+Return-Path: <alerts@thinkorswim.com>
+Received: from prdtxlvtosmx04.clientsys.local (tosmx.thinkorswim.com. [198.200.170.92])
+        by mx.google.com with ESMTP id p9si562735otk.121.2020.08.28.07.21.10
+        for <scotthaasbot@gmail.com>;
+        Fri, 28 Aug 2020 07:21:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) client-ip=198.200.170.92;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) smtp.mailfrom=alerts@thinkorswim.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=thinkorswim.com
+Received: from prdtxlstlapp27.clientsys.local (unknown [10.137.4.55])
+	by prdtxlvtosmx04.clientsys.local (Postfix) with ESMTP id 92372219CCDA
+	for <scotthaasbot@gmail.com>; Fri, 28 Aug 2020 09:21:10 -0500 (CDT)
+Date: Fri, 28 Aug 2020 09:21:10 -0500 (CDT)
+From: alerts@thinkorswim.com
+To: scotthaasbot@gmail.com
+Message-ID: <1090450608.106633.1598624470601.JavaMail.tosprod@prdtxlstlapp27>
+Subject: Alert: New symbols: DKNG, ERIC, KO, PTON, RKT, SNAP, TRVN, TSM, VZ
+ were added to All Liquid Options.
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html style=3D"width:100%;font-family:arial, 'helvetica neue', helvetica, s=
+ans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0=
+;Margin:0;">
+<head>
+    <meta charset=3D"UTF-8">
+    <meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewp=
+ort">
+    <meta name=3D"x-apple-disable-message-reformatting">
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+    <meta content=3D"telephone=3Dno" name=3D"format-detection">
+    <title>Email template v3</title>
+    <!--[if (mso 16)]>
+    <style type=3D"text/css">
+    a {text-decoration: none;}
+    </style>
+    <![endif]-->
+    <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><!=
+[endif]-->
+    <style type=3D"text/css">
+@media only screen and (max-width:600px) {p, ul li, ol li, a { font-size:16=
+px!important; line-height:150%!important } h1 { font-size:30px!important; t=
+ext-align:center; line-height:120%!important } h2 { font-size:26px!importan=
+t; text-align:center; line-height:120%!important } h3 { font-size:20px!impo=
+rtant; text-align:center; line-height:120%!important } h1 a { font-size:30p=
+x!important } h2 a { font-size:26px!important } h3 a { font-size:20px!impor=
+tant } .es-menu td a { font-size:16px!important } .es-header-body p, .es-he=
+ader-body ul li, .es-header-body ol li, .es-header-body a { font-size:16px!=
+important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li=
+, .es-footer-body a { font-size:16px!important } .es-infoblock p, .es-infob=
+lock ul li, .es-infoblock ol li, .es-infoblock a { font-size:12px!important=
+ } *[class=3D"gmail-fix"] { display:none!important } .es-m-txt-c, .es-m-txt=
+-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align:center!important } .es-m=
+-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text-align:right!i=
+mportant } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m-txt-l h3 { te=
+xt-align:left!important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img=
+ { display:inline!important } .es-button-border { display:block!important }=
+ a.es-button { font-size:20px!important; display:block!important; border-le=
+ft-width:0px!important; border-right-width:0px!important } .es-btn-fw { bor=
+der-width:10px 0px!important; text-align:center!important } .es-adaptive ta=
+ble, .es-btn-fw, .es-btn-fw-brdr, .es-left, .es-right { width:100%!importan=
+t } .es-content table, .es-header table, .es-footer table, .es-content, .es=
+-footer, .es-header { width:100%!important; max-width:600px!important } .es=
+-adapt-td { display:block!important; width:100%!important } .adapt-img { wi=
+dth:100%!important; height:auto!important } .es-m-p0 { padding:0px!importan=
+t } .es-m-p0r { padding-right:0px!important } .es-m-p0l { padding-left:0px!=
+important } .es-m-p0t { padding-top:0px!important } .es-m-p0b { padding-bot=
+tom:0!important } .es-m-p20b { padding-bottom:20px!important } .es-mobile-h=
+idden, .es-hidden { display:none!important } .es-desk-hidden { display:tabl=
+e-row!important; width:auto!important; overflow:visible!important; float:no=
+ne!important; max-height:inherit!important; line-height:inherit!important }=
+ .es-desk-menu-hidden { display:table-cell!important } table.es-table-not-a=
+dapt, .esd-block-html table { width:auto!important } table.es-social { disp=
+lay:inline-block!important } table.es-social td { display:inline-block!impo=
+rtant } }
+#outlook a {
+=09padding:0;
+}
+.ExternalClass {
+=09width:100%;
+}
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+=09line-height:100%;
+}
+.es-button {
+=09mso-style-priority:100!important;
+=09text-decoration:none!important;
+}
+a[x-apple-data-detectors] {
+=09color:inherit!important;
+=09text-decoration:none!important;
+=09font-size:inherit!important;
+=09font-family:inherit!important;
+=09font-weight:inherit!important;
+=09line-height:inherit!important;
+}
+.es-desk-hidden {
+=09display:none;
+=09float:left;
+=09overflow:hidden;
+=09width:0;
+=09max-height:0;
+=09line-height:0;
+=09mso-hide:all;
+}
+</style>
+</head>
+<body style=3D"width:100%;font-family:arial, 'helvetica neue', helvetica, s=
+ans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0=
+;Margin:0;">
+<div class=3D"es-wrapper-color" style=3D"background-color:#F0F1F2;">
+    <!--[if gte mso 9]>
+    <v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+        <v:fill type=3D"tile" color=3D"#f0f1f2"></v:fill>
+    </v:background>
+    <![endif]-->
+    <table cellpadding=3D"0" cellspacing=3D"0" class=3D"es-wrapper" width=
+=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collaps=
+e:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;bac=
+kground-repeat:repeat;background-position:center top;">
+        <tr style=3D"border-collapse:collapse;">
+            <td valign=3D"top" style=3D"padding:0;Margin:0;">
+                <table cellpadding=3D"0" cellspacing=3D"0" class=3D"es-cont=
+ent" align=3D"center" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;bo=
+rder-collapse:collapse;border-spacing:0px;table-layout:fixed !important;wid=
+th:100%;">
+                    <tr style=3D"border-collapse:collapse;">
+                        <td align=3D"center" bgcolor=3D"#f0f1f2" style=3D"p=
+adding:0;Margin:0;background-color:#F0F1F2;">
+                            <table bgcolor=3D"#f0f1f2" class=3D"es-content-=
+body" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" st=
+yle=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;b=
+order-spacing:0px;background-color:#FFFFFF;">
+                                <tr style=3D"border-collapse:collapse;">
+                                    <td align=3D"left" bgcolor=3D"#50b948" =
+style=3D"Margin:0;padding-top:20px;padding-bottom:20px;padding-left:20px;pa=
+dding-right:20px;background-color:#50B948;background-position:left top;">
+                                        <table cellpadding=3D"0" cellspacin=
+g=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;b=
+order-collapse:collapse;border-spacing:0px;">
+                                            <tr style=3D"border-collapse:co=
+llapse;">
+                                                <td width=3D"560" align=3D"=
+center" valign=3D"top" style=3D"padding:0;Margin:0;">
+                                                    <table cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-=
+rspace:0pt;border-collapse:collapse;border-spacing:0px;">
+                                                        <tr style=3D"border=
+-collapse:collapse;">
+                                                            <td align=3D"le=
+ft" style=3D"padding:5px;Margin:0;"><img class=3D"adapt-img" src=3D"https:/=
+/www.tdameritrade.com/images/email/kana/kana_retail_tda-logo.gif" alt style=
+=3D"display:block;border:0;outline:none;text-decoration:none;-ms-interpolat=
+ion-mode:bicubic;" width=3D"182"></td>
+                                                        </tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table>
+                <table cellpadding=3D"0" cellspacing=3D"0" class=3D"es-foot=
+er" align=3D"center" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;bor=
+der-collapse:collapse;border-spacing:0px;table-layout:fixed !important;widt=
+h:100%;background-color:transparent;background-repeat:repeat;background-pos=
+ition:center top;">
+                    <tr style=3D"border-collapse:collapse;">
+                        <td align=3D"center" bgcolor=3D"#f0f1f2" style=3D"p=
+adding:0;Margin:0;background-color:#F0F1F2;">
+                            <table class=3D"es-footer-body" align=3D"center=
+" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;bac=
+kground-color:transparent;">
+                                <tr style=3D"border-collapse:collapse;">
+                                    <td align=3D"left" style=3D"Margin:0;pa=
+dding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px;bac=
+kground-position:left top;background-color:#FFFFFF;" bgcolor=3D"#ffffff">
+                                        <table cellpadding=3D"0" cellspacin=
+g=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;b=
+order-collapse:collapse;border-spacing:0px;">
+                                            <tr style=3D"border-collapse:co=
+llapse;">
+                                                <td width=3D"560" align=3D"=
+center" valign=3D"top" style=3D"padding:0;Margin:0;">
+                                                    <table cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-=
+rspace:0pt;border-collapse:collapse;border-spacing:0px;">
+                                                        <tr style=3D"border=
+-collapse:collapse;">
+                                                            <td align=3D"le=
+ft" style=3D"padding:0;Margin:0;padding-top:10px;padding-left:15px;"><p sty=
+le=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-=
+line-height-rule:exactly;font-size:23px;font-family:arial, 'helvetica neue'=
+, helvetica, sans-serif;line-height:35px;color:#50B948;">Alert: New symbols=
+: DKNG, ERIC, KO, PTON, RKT, SNAP, TRVN, TSM, VZ were added to All Liquid O=
+ptions. </p></td>
+                                                        </tr>
+                                                        <tr style=3D"border=
+-collapse:collapse;">
+                                                            <td align=3D"le=
+ft" class=3D"es-m-txt-l" style=3D"padding:0;Margin:0;padding-bottom:10px;pa=
+dding-left:15px;"><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-te=
+xt-size-adjust:none;mso-line-height-rule:exactly;font-size:17px;font-family=
+:arial, 'helvetica neue', helvetica, sans-serif;line-height:26px;color:#333=
+333;">Alert: New symbols: DKNG, ERIC, KO, PTON, RKT, SNAP, TRVN, TSM, VZ we=
+re added to All Liquid Options. </p></td>
+                                                        </tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table>
+                <table cellpadding=3D"0" cellspacing=3D"0" class=3D"es-cont=
+ent" align=3D"center" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;bo=
+rder-collapse:collapse;border-spacing:0px;table-layout:fixed !important;wid=
+th:100%;">
+                    <tr style=3D"border-collapse:collapse;">
+                        <td align=3D"center" bgcolor=3D"#f0f1f2" style=3D"p=
+adding:0;Margin:0;background-color:#F0F1F2;">
+                            <table class=3D"es-content-body" align=3D"cente=
+r" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" style=3D"mso-table-lsp=
+ace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;ba=
+ckground-color:transparent;" bgcolor=3D"#f0f1f2">
+                                <tr style=3D"border-collapse:collapse;">
+                                    <td align=3D"left" style=3D"padding:0;M=
+argin:0;padding-bottom:20px;padding-left:20px;padding-right:20px;background=
+-position:left top;background-color:#FFFFFF;" bgcolor=3D"#ffffff">
+                                        <table cellpadding=3D"0" cellspacin=
+g=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;b=
+order-collapse:collapse;border-spacing:0px;">
+                                            <tr style=3D"border-collapse:co=
+llapse;">
+                                                <td width=3D"560" align=3D"=
+center" valign=3D"top" style=3D"padding:0;Margin:0;">
+                                                    <table cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-=
+rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:=
+left top;">
+                                                        <tr style=3D"border=
+-collapse:collapse;">
+                                                            <td align=3D"le=
+ft" class=3D"es-m-txt-l" style=3D"padding:0;Margin:0;padding-top:10px;paddi=
+ng-left:15px;padding-right:15px;"><p style=3D"Margin:0;-webkit-text-size-ad=
+just:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:=
+11px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height=
+:17px;color:#A29C9C;"><strong>To view and manage your alerts:</strong></p><=
+p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none=
+;mso-line-height-rule:exactly;font-size:11px;font-family:arial, 'helvetica =
+neue', helvetica, sans-serif;line-height:17px;color:#A29C9C;">thinkorswim M=
+obile - <a target=3D"_blank" style=3D"-webkit-text-size-adjust:none;-ms-tex=
+t-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helveti=
+ca neue', helvetica, sans-serif;font-size:11px;text-decoration:underline;co=
+lor:#A29C9C;" href=3D"https://apps.apple.com/us/app/thinkorswim-buy-sell-tr=
+ade/id299366785">iOS </a>and <a target=3D"_blank" style=3D"-webkit-text-siz=
+e-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-f=
+amily:arial, 'helvetica neue', helvetica, sans-serif;font-size:11px;text-de=
+coration:underline;color:#A29C9C;" href=3D"https://play.google.com/store/ap=
+ps/details?id=3Dcom.devexperts.tdmobile.platform.android.thinkorswim">Andro=
+id</a></p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-=
+adjust:none;mso-line-height-rule:exactly;font-size:11px;font-family:arial, =
+'helvetica neue', helvetica, sans-serif;line-height:17px;color:#A29C9C;"><a=
+ target=3D"_blank" style=3D"-webkit-text-size-adjust:none;-ms-text-size-adj=
+ust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', =
+helvetica, sans-serif;font-size:11px;text-decoration:underline;color:#A29C9=
+C;" href=3D"https://platform.thinkorswim.com/">thinkorswim Desktop&nbsp;</a=
+></p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjus=
+t:none;mso-line-height-rule:exactly;font-size:11px;font-family:arial, 'helv=
+etica neue', helvetica, sans-serif;line-height:17px;color:#A29C9C;"><a targ=
+et=3D"_blank" style=3D"-webkit-text-size-adjust:none;-ms-text-size-adjust:n=
+one;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helve=
+tica, sans-serif;font-size:11px;text-decoration:underline;color:#A29C9C;" h=
+ref=3D"https://secure.tdameritrade.com/login">TD Ameritrade website</a></p>=
+<p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:non=
+e;mso-line-height-rule:exactly;font-size:11px;font-family:arial, 'helvetica=
+ neue', helvetica, sans-serif;line-height:17px;color:#A29C9C;">TD Ameritrad=
+e Mobile - <a target=3D"_blank" style=3D"-webkit-text-size-adjust:none;-ms-=
+text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helv=
+etica neue', helvetica, sans-serif;font-size:11px;text-decoration:underline=
+;color:#A29C9C;" href=3D"https://apps.apple.com/us/app/td-ameritrade-mobile=
+/id534659421">iOS </a>and <a target=3D"_blank" style=3D"-webkit-text-size-a=
+djust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-fami=
+ly:arial, 'helvetica neue', helvetica, sans-serif;font-size:11px;text-decor=
+ation:underline;color:#A29C9C;" href=3D"https://play.google.com/store/apps/=
+details?id=3Dcom.tdameritrade.mobile3&hl=3Den_US">Android</a></p></td>
+                                                        </tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table>
+                <table cellpadding=3D"0" cellspacing=3D"0" class=3D"es-cont=
+ent" align=3D"center" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;bo=
+rder-collapse:collapse;border-spacing:0px;table-layout:fixed !important;wid=
+th:100%;">
+                    <tr style=3D"border-collapse:collapse;">
+                        <td align=3D"center" bgcolor=3D"#f0f1f2" style=3D"p=
+adding:0;Margin:0;background-color:#F0F1F2;">
+                            <table bgcolor=3D"#f0f1f2" class=3D"es-content-=
+body" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" st=
+yle=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;b=
+order-spacing:0px;background-color:#F0F1F2;">
+                                <tr style=3D"border-collapse:collapse;">
+                                    <td align=3D"left" style=3D"padding:0;M=
+argin:0;background-position:left top;">
+                                        <table cellpadding=3D"0" cellspacin=
+g=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;b=
+order-collapse:collapse;border-spacing:0px;">
+                                            <tr style=3D"border-collapse:co=
+llapse;">
+                                                <td width=3D"600" align=3D"=
+center" valign=3D"top" style=3D"padding:0;Margin:0;">
+                                                    <table cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"100%" style=3D"mso-table-lspace:0pt;mso-table-=
+rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:=
+left top;">
+                                                        <tr style=3D"border=
+-collapse:collapse;">
+                                                            <td align=3D"le=
+ft" style=3D"Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;p=
+adding-bottom:20px;"><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms=
+-text-size-adjust:none;mso-line-height-rule:exactly;font-size:10px;font-fam=
+ily:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;color:#=
+A29C9C;">All investing involves risks, including loss of principal.</p><p s=
+tyle=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;ms=
+o-line-height-rule:exactly;font-size:10px;font-family:arial, 'helvetica neu=
+e', helvetica, sans-serif;line-height:12px;color:#A29C9C;">Market volatilit=
+y, volume, and system availability may delay account access and trade execu=
+tions.</p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-=
+adjust:none;mso-line-height-rule:exactly;font-size:10px;font-family:arial, =
+'helvetica neue', helvetica, sans-serif;line-height:12px;color:#A29C9C;">Pa=
+st performance of a security does not guarantee future results or success.<=
+/p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:=
+none;mso-line-height-rule:exactly;font-size:10px;font-family:arial, 'helvet=
+ica neue', helvetica, sans-serif;line-height:12px;color:#A29C9C;"><br></p><=
+p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none=
+;mso-line-height-rule:exactly;font-size:10px;font-family:arial, 'helvetica =
+neue', helvetica, sans-serif;line-height:12px;color:#A29C9C;">Options invol=
+ve risks and are not suitable for all investors. Before trading options, ca=
+refully read <a target=3D"_blank" style=3D"-webkit-text-size-adjust:none;-m=
+s-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'he=
+lvetica neue', helvetica, sans-serif;font-size:10px;text-decoration:underli=
+ne;color:#A29C9C;line-height:12px;" href=3D"https://www.theocc.com/about/pu=
+blications/character-risks.jsp">Characteristics and Risks of Standardized O=
+ptions</a>.</p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-=
+size-adjust:none;mso-line-height-rule:exactly;font-size:10px;font-family:ar=
+ial, 'helvetica neue', helvetica, sans-serif;line-height:12px;color:#A29C9C=
+;"><br></p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size=
+-adjust:none;mso-line-height-rule:exactly;font-size:10px;font-family:arial,=
+ 'helvetica neue', helvetica, sans-serif;line-height:12px;color:#A29C9C;">F=
+utures and futures options trading is speculative, and is not suitable for =
+all investors. Please read the <a target=3D"_blank" style=3D"-webkit-text-s=
+ize-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font=
+-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:10px;text-=
+decoration:underline;color:#A29C9C;line-height:12px;" href=3D"https://www.t=
+dameritrade.com/retail-en_us/resources/pdf/TDA631.pdf">Risk Disclosure for =
+Futures and Options </a>prior to trading futures products. Futures accounts=
+ are not protected by the Securities Investor Protection Corporation (SIPC)=
+. Futures and futures options trading services provided by TD Ameritrade Fu=
+tures &amp; Forex LLC. Trading privileges subject to review and approval. N=
+ot all clients will qualify.</p><p style=3D"Margin:0;-webkit-text-size-adju=
+st:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:10=
+px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:1=
+2px;color:#A29C9C;"><br></p><p style=3D"Margin:0;-webkit-text-size-adjust:n=
+one;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:10px;f=
+ont-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;=
+color:#A29C9C;">You are receiving this email because you signed up for emai=
+l alerts from TD Ameritrade. To update your email alert preferences, go to =
+your alert settings.</p><p style=3D"Margin:0;-webkit-text-size-adjust:none;=
+-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:10px;font-=
+family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;colo=
+r:#A29C9C;"><br></p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-=
+text-size-adjust:none;mso-line-height-rule:exactly;font-size:10px;font-fami=
+ly:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px;color:#A=
+29C9C;">TD Ameritrade does not provide legal, tax, or investment advice. We=
+ suggest you consult with a tax-planning professional about your personal s=
+ituation.</p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-si=
+ze-adjust:none;mso-line-height-rule:exactly;font-size:10px;font-family:aria=
+l, 'helvetica neue', helvetica, sans-serif;line-height:12px;color:#A29C9C;"=
+><br></p><p style=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-a=
+djust:none;mso-line-height-rule:exactly;font-size:10px;font-family:arial, '=
+helvetica neue', helvetica, sans-serif;line-height:12px;color:#A29C9C;">TD =
+Ameritrade, Inc., member <a target=3D"_blank" style=3D"-webkit-text-size-ad=
+just:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-famil=
+y:arial, 'helvetica neue', helvetica, sans-serif;font-size:10px;text-decora=
+tion:underline;color:#A29C9C;line-height:12px;" href=3D"http://www.finra.or=
+g/">FINRA</a>/<a target=3D"_blank" style=3D"-webkit-text-size-adjust:none;-=
+ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'h=
+elvetica neue', helvetica, sans-serif;font-size:10px;text-decoration:underl=
+ine;color:#A29C9C;line-height:12px;" href=3D"https://www.sipc.org/">SIPC</a=
+>. TD Ameritrade is a trademark jointly owned by TD Ameritrade IP Company, =
+Inc. and The Toronto-Dominion Bank. Copyright 2019 TD Ameritrade.</p><p sty=
+le=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-=
+line-height-rule:exactly;font-size:10px;font-family:arial, 'helvetica neue'=
+, helvetica, sans-serif;line-height:12px;color:#A29C9C;"><br></p><p style=
+=3D"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-li=
+ne-height-rule:exactly;font-size:10px;font-family:arial, 'helvetica neue', =
+helvetica, sans-serif;line-height:12px;color:#A29C9C;">Distributed by: TD A=
+meritrade, Inc., 200 South 108th Avenue, Omaha, NE 68154-2631.</p></td>
+                                                        </tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

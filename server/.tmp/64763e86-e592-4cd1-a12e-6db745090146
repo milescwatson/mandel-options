@@ -1,0 +1,27 @@
+Message-ID: <c0dce4c321f0f44b89684b48311c6a49@sample.com>
+From: <test@sample.com>
+To: <test@gmail.com>
+Subject: Valid SMTP 157.245.94.27
+Date: Tue, 29 Sep 2020 05:01:56 +0100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="522e18b1a8da74716496652d000e12d0"
+
+This is a multi-part message in MIME format.
+
+--522e18b1a8da74716496652d000e12d0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+157.245.94.27:25 | no auth |  SSL: False | Hostname: 
+
+--522e18b1a8da74716496652d000e12d0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+157.245.94.27:25 | no auth |  SSL: False | Hostname: 
+
+--522e18b1a8da74716496652d000e12d0--
+

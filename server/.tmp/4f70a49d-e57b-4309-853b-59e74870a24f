@@ -1,0 +1,736 @@
+Received: by mail-ej1-f47.google.com with SMTP id gr14so533303ejb.1
+        for <strategyparser@excel.level4s.com>; Tue, 29 Sep 2020 19:12:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:delivered-to:dkim-signature:dkim-signature
+         :mime-version:subject:from:to:date:message-id:original-message-id
+         :feedback-id;
+        bh=aJm1utuXF319/YYIeqPIVGACpUH9k+2XBryzbmZ5XW0=;
+        b=qlp0+MrNvJds7/RDPKnv/M20cDqW/tvqZZp+9NsEXKE2B7ZHIb7QRne8AyvT7f1GqZ
+         8POzGpI1mWSRE0Vn34A2pYI4VZs5ICHM2BmPvOQAY6KyEkdKY32jvSr60/cidAkdby7N
+         h805oOeFtoZFZpM/uJ15FD/wMD0K+OLxdS4BqQ+5nxFcIpqXo3i4fnOybXZw2rwBA3Ez
+         AsnG9ZrF9sfUta/210Pu2+36WOsy/kcUgO+S66tbxdBBDvMsG4kau5M/OzMQckLDWipL
+         uBWoOVA5qZIJua0sQrBNeAsjbWTRw1F2J3PlD0Reqk4esPwDq8EwW6kuehifAwE2nvRF
+         ctmg==
+X-Gm-Message-State: AOAM533t16q8cOuRyiwny4CUBuyaBpT3MemDpcc4j63SOcnzwLTkHlmD
+	huF71MzXocm4QYKQciAGupEPBB+41ciAkpEQ0AHt6sJiqGbX7eP4ow==
+X-Received: by 2002:a17:906:cf9b:: with SMTP id um27mr591483ejb.66.1601431937209;
+        Tue, 29 Sep 2020 19:12:17 -0700 (PDT)
+X-Forwarded-To: strategyparser@excel.level4s.com
+X-Forwarded-For: scotthaasbot@gmail.com strategyparser@excel.level4s.com
+Delivered-To: scotthaasbot@gmail.com
+Received: by 2002:ab4:a948:0:0:0:0:0 with SMTP id fs8csp4597804ecb;
+        Tue, 29 Sep 2020 19:12:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyz50wnHg01YqZcrfi6a5CrMT6ZLWm4SLaMUtqpz5+eeHbBNdNcBnSVyuCrfL2l7oxnUpo6
+X-Received: by 2002:a05:620a:90c:: with SMTP id v12mr539128qkv.16.1601431936099;
+        Tue, 29 Sep 2020 19:12:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601431936; cv=none;
+        d=google.com; s=arc-20160816;
+        b=O0G9SSTEVu7I3VyYJu0iQmnJ8z2V3HAm1VZqNU+NAJ9c80sEOYH/7eSBW9tgFbKJdj
+         OqOC6ceM51EsXgPadoGsRIs/Wk7TbEpSBqV/D0Jg3tRXrCvHI5s9RAyVqgvea+Azos3x
+         lUQd374oNIxy6NGwTGaWihRRXTIIdsB1q7GBWYV88me2C9gsFfeHGGw9ywS0OZcYyM/s
+         n8otOFXTB3EThHzw8hZwuMOiMvht09MdF7qLP1dhovy9yQTX54vGsskLkcbDgYuFEuIQ
+         ekR4en59Xt3OeOwyqbhMdUDGJuHxnJSh30joy813CWiUmHtjsKaDzxPZDCLbdhkFKDia
+         6lsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:original-message-id:message-id:date:to:from:subject
+         :mime-version:dkim-signature:dkim-signature;
+        bh=aJm1utuXF319/YYIeqPIVGACpUH9k+2XBryzbmZ5XW0=;
+        b=0i23Rz7xjQ6fkHQWgeiPf9ahjkYO0O/gfkz5jNMixr7UHqlyA6hLfD+iSbR4AxhfGL
+         SqBVZgFDsWEdmQtNKKgtJB00NnUM4EvFk89bD1AVaPMuGup+NO3KHugkBekkankw4FI3
+         7UPesgXG+GMDprxRucISOoeilIZTgcE4vhAHZVCSGiW4owk6GcIJC6yfLfvAACHxcNsz
+         u8iPoRjL4R7dJ//V4YUYpw8So23jh9uSMyBY0WiBeuVNQP5bxLTVudH05j0UXE+UGT7D
+         Bc/nHVHFRiIB01k74Sku8FRgF6/v+5qpJZrrMqSdE2S+CpynHs1tmVCV+AyF2i/cNl/H
+         KZBA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@tradingview.com header.s=tebqcom4qosfiunpxwusvwmhghxoddyn header.b=ItK0b1V9;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=iv6UtTeI;
+       spf=pass (google.com: domain of 01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@east-smtp.tradingview.com designates 54.240.10.19 as permitted sender) smtp.mailfrom=01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@east-smtp.tradingview.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=tradingview.com
+Return-Path: <01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@east-smtp.tradingview.com>
+Received: from a10-19.smtp-out.amazonses.com (a10-19.smtp-out.amazonses.com. [54.240.10.19])
+        by mx.google.com with ESMTPS id z15si79180qvj.109.2020.09.29.19.12.15
+        for <scotthaasbot@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Tue, 29 Sep 2020 19:12:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@east-smtp.tradingview.com designates 54.240.10.19 as permitted sender) client-ip=54.240.10.19;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@tradingview.com header.s=tebqcom4qosfiunpxwusvwmhghxoddyn header.b=ItK0b1V9;
+       dkim=pass header.i=@amazonses.com header.s=224i4yxa5dv7c2xz3womw6peuasteono header.b=iv6UtTeI;
+       spf=pass (google.com: domain of 01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@east-smtp.tradingview.com designates 54.240.10.19 as permitted sender) smtp.mailfrom=01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@east-smtp.tradingview.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=tradingview.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=tebqcom4qosfiunpxwusvwmhghxoddyn; d=tradingview.com;
+	t=1601431935;
+	h=Content-Type:MIME-Version:Subject:From:To:Date:Message-ID;
+	bh=aJm1utuXF319/YYIeqPIVGACpUH9k+2XBryzbmZ5XW0=;
+	b=ItK0b1V9Fvw9Mv1OykYujc9avDBkNA0UJHSsqtvTRt2dnutvut/IycS6wUTsYoc3
+	roZuTLX3snlnU5uErOxE7bBp5+ihcETL6Zu4BsQOcD3kMim0GhNhQqJa416k289g43z
+	bI7cVxxwakaCkx6R99FnEzla6DSXjDZEzvujpYRg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=224i4yxa5dv7c2xz3womw6peuasteono; d=amazonses.com; t=1601431935;
+	h=Content-Type:MIME-Version:Subject:From:To:Date:Message-ID:Feedback-ID;
+	bh=aJm1utuXF319/YYIeqPIVGACpUH9k+2XBryzbmZ5XW0=;
+	b=iv6UtTeI8W5Kynsq1UFB0I20/+CwtY/8UuFY7cYUobG6n0xCMRyYbEV2yzoGNEHe
+	5LXYT6c1Y98RR1WPXnx/judb5k2L0f22W6krd9JWmMlnjCSk8d5wWZXFMPnjGe+fhXe
+	41Kt/Nn2FOK5U/0KH5seRHPBMGMfvtYskYSQGBl0=
+Content-Type: multipart/alternative;
+ boundary="===============6157189168803913371=="
+MIME-Version: 1.0
+Subject: New script version published by VerticaltradersIndicators on
+ TradingView
+From: TradingView <noreply@tradingview.com>
+To: scotthaasbot@gmail.com
+Date: Wed, 30 Sep 2020 02:12:15 +0000
+Message-ID: <01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000@email.amazonses.com>
+Original-Message-ID: 
+ <160143193471.18403.7396578623645817521@prod-frontend-web-4.prod>
+X-SES-Outgoing: 2020.09.30-54.240.10.19
+Feedback-ID: 1.us-east-1.dJX2xx0zsf93o2zkSlILUU/8EdBfridsykCSgjgyirk=:AmazonSES
+
+--===============6157189168803913371==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+Please use HTML version of this message.
+--===============6157189168803913371==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+
+
+
+<html>
+=09<body style=3D"margin:0;padding:0;min-width:100%!important;"><div style=
+=3D"display: none; max-height:0; overflow: hidden;">
+=09=09=09=09V 2.1
+=09=09=09</div>
+
+=09=09=09<div style=3D"display: none; max-height: 0; overflow: hidden;">
+=09=09=09=09&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;
+=09=09=09</div><table width=3D"100%" align=3D"center" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" style=3D"height:100%;-ms-text-size-adjust:100%;=
+-webkit-text-size-adjust:100%;margin:0;border-collapse:collapse;mso-table-l=
+space:0;mso-table-rspace:0;padding:0;width:100%;">
+=09=09=09<tbody>
+=09=09=09=09<tr>
+=09=09=09=09=09<td align=3D"center" valign=3D"top" style=3D"-ms-text-size-a=
+djust:100%;-webkit-text-size-adjust:100%;margin:0;background-color:#f7f7f7;=
+height:100%;mso-line-height-rule:exactly;padding:0;width:100%;">
+=09=09=09=09=09=09<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0"=
+ border=3D"0" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:1=
+00%;border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-t=
+ext-size-adjust:100%;background-color:#f7f7f7;mso-line-height-rule:exactly;=
+" align=3D"center" valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09<table style=3D"width:640px;" width=3D"640" a=
+lign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" align=3D"center" wid=
+th=3D"640" style=3D"width:640px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table style=3D"-ms-text-size-adjust=
+:100%;-webkit-text-size-adjust:100%;border-collapse:collapse;max-width:640p=
+x;mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%" align=3D"center" c=
+ellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padd=
+ing:15px 20px 17px;text-align:left;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)=
+]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top"=
+ align=3D"center" style=3D"width:520px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table style=3D=
+"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;border-collapse:co=
+llapse;mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%" align=3D"cent=
+er" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td wi=
+dth=3D"50%" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100=
+%;mso-line-height-rule:exactly;padding-right:20px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a =
+href=3D"https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com/=
+1/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/F6gCmqW6dyC-=
+OQ_8uxvgWAz5N7uUd3C5qgX03rF9JKA=3D160" target=3D"_blank" style=3D"-ms-text-=
+size-adjust:100%;-webkit-text-size-adjust:100%;color:#2196F3 !important;dis=
+play:inline-block;mso-line-height-rule:exactly;text-decoration:none;padding=
+-top:5px;"><img src=3D"https://s3.tradingview.com/mail/tradingview_logo.png=
+" width=3D"126" height=3D"19" alt=3D"TradingView" style=3D"-ms-interpolatio=
+n-mode:bicubic;border:0;color:#fff;font-family:Arial,Helvetica,sans-serif;f=
+ont-size:16px;line-height:24px;max-width:133px;text-align:left"></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td wi=
+dth=3D"50%" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100=
+%;mso-line-height-rule:exactly;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<ta=
+ble align=3D"right" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-s=
+ize-adjust:100%;-webkit-text-size-adjust:100%;border-collapse:collapse;mso-=
+table-lspace:0;mso-table-rspace:0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09<td width=3D"20" style=3D"-ms-text-size-adjust:100%;-webkit-text-size=
+-adjust:100%;mso-line-height-rule:exactly;padding-right:10px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09<div style=3D"display:inline-block;height:19px;vertical-align:top;=
+">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09<span style=3D'display:inline-block;background-color:#69609f;co=
+lor:white;width:20px;height:20px;line-height:20px;font-size:14.0px;font-fam=
+ily:"Trebuchet MS", Arial, sans-serif;border-radius:2px;text-align:center;'=
+>M</span>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09</div>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-font-smoothing:subpixe=
+l-antialiased;-webkit-text-size-adjust:100%;color:#262b3e;font-family:'Treb=
+uchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', sans-seri=
+f;font-size:16px;line-height:19px;mso-line-height-rule:exactly;text-align:l=
+eft;white-space:nowrap;vertical-align:top;">mandelsc</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</t=
+able>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte ms=
+o 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-t=
+ext-size-adjust:100%;background-color:#f7f7f7;mso-line-height-rule:exactly;=
+" align=3D"center" valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09<table style=3D"width:600px;" width=3D"600" a=
+lign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" align=3D"center" wid=
+th=3D"600" style=3D"width:600px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table style=3D"-ms-text-size-adjust=
+:100%;-webkit-text-size-adjust:100%;border-collapse:collapse;max-width:600p=
+x;mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%" align=3D"center" c=
+ellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;background-color:#fff;mso-line-he=
+ight-rule:exactly;border-radius:4px;padding:40px 20px 30px">=09<!--[if (gte=
+ mso 9)|(IE)]>
+=09<table style=3D"width:520px;" width=3D"520" align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0">
+=09=09<tr>
+=09=09=09<td valign=3D"top" align=3D"center" width=3D"520" style=3D"width:5=
+20px;">
+=09=09=09=09<![endif]-->
+=09=09=09=09<table width=3D"100%" align=3D"center" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100=
+%;border-collapse:collapse;margin:0 auto;max-width:520px;mso-table-lspace:0=
+;mso-table-rspace:0;width:100%;">
+=09<tr>
+=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;=
+color:#262b3e;font-family:'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Uni=
+code', 'Lucida Sans', sans-serif;font-size:30px;font-weight:700;line-height=
+:1.2;mso-line-height-rule:exactly;padding-bottom:20px;text-align:center;let=
+ter-spacing:-0.3px;">
+=09=09=09<a style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100=
+%;color:#2196F3 !important;mso-line-height-rule:exactly;text-decoration:non=
+e;" href=3D"https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.=
+com%2Fu%2FVerticaltradersIndicators%2F%3Futm_source=3Dnotification_email%26=
+utm_medium=3Demail%26utm_campaign=3Dnotification_pubscript_update/1/0100017=
+4dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/ckE4f0AyI-4OxyXdGtux6=
+2b4f1NWhg4KkZicEEonYZg=3D160">VerticaltradersIndicators</a> you follow upda=
+ted script <a style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:1=
+00%;color:#2196F3 !important;mso-line-height-rule:exactly;text-decoration:n=
+one;" href=3D"https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingvie=
+w.com%2Fscript%2F2wybQ0vo-Heiken-Ashi%2F%3Futm_source=3Dnotification_email%=
+26utm_medium=3Demail%26utm_campaign=3Dnotification_pubscript_update/1/01000=
+174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/ZWBoAf4snpB5rqCeI7_=
+c9QRiYH012g8U8Eq_IbVWg20=3D160">Heiken Ashi</a>
+=09=09</td>
+=09</tr>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-font-smoot=
+hing:subpixel-antialiased;-webkit-text-size-adjust:100%;color:#4c525e;font-=
+family:'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans=
+', sans-serif;font-size:18px;line-height:26px;mso-line-height-rule:exactly;=
+text-align:left;padding-top:5px;padding-bottom:26px;">
+=09=09=09=09=09=09=09<div style=3D"background-color:#f7f8fa;border-radius:4=
+px;padding:20px;margin-top:5px;word-break:break-all;">
+=09=09=09=09=09=09=09=09<a href=3D"https://link-n.tradingview.com/CL0/https=
+:%2F%2Fwww.tradingview.com%2Fu%2FVerticaltradersIndicators%2F%3Futm_source=
+=3Dnotification_email%26utm_medium=3Demail%26utm_campaign=3Dnotification_pu=
+bscript_update/2/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-0000=
+00/wBy4Aw0dBehvrxYHhFVSfv_vCk_gjCH1Vk2clsPJHjY=3D160" style=3D"display:inli=
+ne-block;height:40px;vertical-align:top;text-decoration:none;">
+=09=09=09=09=09=09=09=09=09<img style=3D"width:40px;height:40px;border-radi=
+us:2px;" src=3D"https://s3.tradingview.com/userpics/4039706-WAWC_mid.png"/>
+=09=09=09=09=09=09=09=09</a>
+=09=09=09=09=09=09=09=09<div style=3D"display:inline-block;vertical-align:t=
+op;padding-left:7px;">
+=09=09=09=09=09=09=09=09=09<a href=3D"https://link-n.tradingview.com/CL0/ht=
+tps:%2F%2Fwww.tradingview.com%2Fu%2FVerticaltradersIndicators%2F%3Futm_sour=
+ce=3Dnotification_email%26utm_medium=3Demail%26utm_campaign=3Dnotification_=
+pubscript_update/3/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-00=
+0000/RHFV1elp7Z5rMsZ686xQL3K2Zl2-POPCo7hcrkxFx4s=3D160" style=3D"text-decor=
+ation:none;"><div style=3D"color:#262b3e;height:21px;font-size:18px;line-he=
+ight:1;margin-top:9px;font-weight:700;">VerticaltradersIndicators</div></a>
+=09=09=09=09=09=09=09=09=09<div style=3D"color:#8797a5;font-size:14px;"></d=
+iv>
+=09=09=09=09=09=09=09=09</div>
+=09<div style=3D"-ms-text-size-adjust:100%;-webkit-font-smoothing:subpixel-=
+antialiased;-webkit-text-size-adjust:100%;color:#4c525e;font-family:'Trebuc=
+het MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;=
+font-size:16px;line-height:1.75;mso-line-height-rule:exactly;text-align:lef=
+t;padding-top:17px;word-break:normal;">
+=09=09V 2.1
+=09</div>
+=09=09=09=09=09=09=09</div>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09</tr>
+=09=09=09=09=09<tr>
+=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;=
+mso-line-height-rule:exactly;padding-bottom:10px;text-align:center;">
+=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0">
+=09=09=09=09<tr>
+=09=09=09=09=09<td valign=3D"top" style=3D"width:auto;">
+=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09<table style=3D"-ms-text-size-adjust:100%;-webkit-text-si=
+ze-adjust:100%;border-collapse:separate;mso-table-lspace:0;mso-table-rspace=
+:0;width:auto;margin:auto;" align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td height=3D"32" style=3D"-ms-text-size-adjust:=
+100%;-webkit-text-size-adjust:100%;background-color:#2196F3;border:1px soli=
+d #2196F3;border-radius:4px;height:32px;mso-line-height-rule:exactly;text-a=
+lign:center;vertical-align:middle;">
+=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-n.tradingview.com/CL0=
+/https:%2F%2Fwww.tradingview.com%2Fscript%2F2wybQ0vo-Heiken-Ashi%2F%3Futm_s=
+ource=3Dnotification_email%26utm_medium=3Demail%26utm_campaign=3Dnotificati=
+on_pubscript_update/2/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080=
+-000000/vBaCuSZ00xSyB9BhE7cR8lm8xie0KpxrKf8y6hnzFrs=3D160" target=3D"_blank=
+" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;backgrou=
+nd-color:#2196F3;color:#fff !important;display:block;font-family:'Trebuchet=
+ MS', Arial, sans-serif;font-size:17px;mso-line-height-rule:exactly;text-al=
+ign:center;text-decoration:none;white-space:normal;padding:7px 24px 5px;lin=
+e-height:1;">
+=09=09=09=09=09=09=09=09=09=09=09<span style=3D"color:#fff;">View script</s=
+pan>
+=09=09=09=09=09=09=09=09=09=09</a>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09</td>
+=09=09=09=09</tr>
+=09=09=09</table>
+=09=09=09<![endif]-->
+=09=09</td>
+=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09</td>
+=09=09</tr>
+=09</table>
+=09<![endif]-->
+</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-t=
+ext-size-adjust:100%;background-color:#f7f7f7;mso-line-height-rule:exactly;=
+table-layout:fixed;text-align:center;" align=3D"center" valign=3D"top">
+=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09<table style=3D"width:640px;" width=3D"640" a=
+lign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" align=3D"center" wid=
+th=3D"640" style=3D"width:640px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table style=3D"-ms-text-size-adjust=
+:100%;-webkit-text-size-adjust:100%;border-collapse:collapse;max-width:640p=
+x;mso-table-lspace:0;mso-table-rspace:0;margin:auto;" width=3D"100%" align=
+=3D"center" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padd=
+ing:40px 20px 20px;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)=
+]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table style=3D"width:52=
+0px;" width=3D"520" align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top"=
+ align=3D"center" width=3D"520" style=3D"width:500px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table style=3D=
+"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;border-collapse:co=
+llapse;margin:0 auto;max-width:520px;mso-table-lspace:0;mso-table-rspace:0;=
+" width=3D"100%" align=3D"center" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td st=
+yle=3D"-ms-text-size-adjust:100%;-webkit-font-smoothing:subpixel-antialiase=
+d;-webkit-text-size-adjust:100%;color:#8b8e95;font-family:'Trebuchet MS', '=
+Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;font-size:=
+14px;line-height:20px;mso-line-height-rule:exactly;text-align:center;paddin=
+g-bottom:10px;vertical-align:top;">33 Irving<span style=3D"display:none;">n=
+one</span> Place, New York, NY 10003</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td st=
+yle=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;mso-line-hei=
+ght-rule:exactly;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!-=
+-[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<ta=
+ble style=3D"width:380px;" width=3D"380" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09<td valign=3D"top" align=3D"center" width=3D"380" style=3D"width:380px;"=
+>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09<table style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:10=
+0%;border-collapse:collapse;margin:0 auto;max-width:450px;min-width:320px;m=
+so-table-lspace:0;mso-table-rspace:0;" width=3D"100%" align=3D"center" cell=
+padding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adj=
+ust:100%;font-size:0;mso-line-height-rule:exactly;padding-bottom:20px;text-=
+align:center;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09<table style=3D"width:380px;" width=3D"380" align=3D"cent=
+er" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09<td valign=3D"top" align=3D"center" width=3D"200" s=
+tyle=3D"width:200px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09<table align=3D"center" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100=
+%;border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;=
+-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padding-bottom:1=
+0px;padding-top:10px;padding-right:3px;text-align:center;vertical-align:top=
+;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-n.tradingvie=
+w.com/CL0/https:%2F%2Fitunes.apple.com%2Fus%2Fapp%2Ftradingview-trading-com=
+munity-charts-and-quotes%2Fid1205990992/1/01000174dcc81a4e-4b087f76-85a3-4c=
+1e-b9d7-b63f8cd37080-000000/U2bsPoFTCuECCqiYmWxEMWKBS1eEs3_WV8YYzjMEjR8=3D1=
+60" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:=
+#2196F3 !important;mso-line-height-rule:exactly;text-decoration:none;" targ=
+et=3D"_blank"><img src=3D"https://s3.tradingview.com/mail/appstore_email_lo=
+go.png" width=3D"105" height=3D"32" alt=3D"App Store" style=3D"-ms-interpol=
+ation-mode:bicubic;border:0"></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;=
+-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padding-bottom:1=
+0px;padding-top:10px;padding-left:3px;text-align:center;vertical-align:top;=
+">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-n.tradingvie=
+w.com/CL0/https:%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid=3Dcom.t=
+radingview.tradingviewapp/1/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8c=
+d37080-000000/-PMHmSpYg2DEXo6Yrpnp0yDW4CU74s2UfQjTnqpt7uQ=3D160 " style=3D"=
+-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#2196F3 !impo=
+rtant;mso-line-height-rule:exactly;text-decoration:none;" target=3D"_blank"=
+><img src=3D"https://s3.tradingview.com/mail/googleplay_email_logo.png" wid=
+th=3D"105" height=3D"32" alt=3D"Google Play" style=3D"-ms-interpolation-mod=
+e:bicubic;border:0"></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09<td valign=3D"top" align=3D"center" width=3D"180" s=
+tyle=3D"width:180px;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09<table width=3D"180" align=3D"center" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust:100%;-webkit-text-s=
+ize-adjust:100%;border-collapse:collapse;mso-table-lspace:0;mso-table-rspac=
+e:0;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-adjust:100%;=
+-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padding-bottom:1=
+0px;padding-top:10px;text-align:left;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09<table align=3D"center" cellpadding=
+=3D"0" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;bor=
+der-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin:auto;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padd=
+ing-left:0;padding-right:3px;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-=
+n.tradingview.com/CL0/https:%2F%2Fwww.facebook.com%2Ftradingview%2F/1/01000=
+174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/8UBk1GhigRwo0NNW__x=
+3oZqKPVOm6g82fJRUP6sB6ko=3D160" target=3D"_blank" style=3D"-ms-text-size-ad=
+just:100%;-webkit-text-size-adjust:100%;color:#2196F3 !important;mso-line-h=
+eight-rule:exactly;text-decoration:none;"><img src=3D"https://s3.tradingvie=
+w.com/mail/facebook_email_logo.png" width=3D"32" height=3D"32" alt=3D"Fb" s=
+tyle=3D"-ms-interpolation-mode:bicubic;border:0"></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padd=
+ing-left:3px;padding-right:3px;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-=
+n.tradingview.com/CL0/https:%2F%2Ftwitter.com%2Ftradingview%2F/1/01000174dc=
+c81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/y5ly7Szl_efRRejpkmPPGdO5=
+m0iliMXjKexo8GZSeCI=3D160" target=3D"_blank" style=3D"-ms-text-size-adjust:=
+100%;-webkit-text-size-adjust:100%;color:#2196F3 !important;mso-line-height=
+-rule:exactly;text-decoration:none;"><img src=3D"https://s3.tradingview.com=
+/mail/twitter_email_logo.png" width=3D"32" height=3D"32" alt=3D"Tw" style=
+=3D"-ms-interpolation-mode:bicubic;border:0"></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padd=
+ing-left:3px;padding-right:3px;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-=
+n.tradingview.com/CL0/https:%2F%2Fwww.youtube.com%2Fchannel%2FUCfOflihrkOKD=
+QZ_ZKtF2VfQ%2Ffeed/1/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-=
+000000/oZzWSuhwtgLGxTRAM_oth5Rx5E9EuLQ_F4GUuydAOhU=3D160" target=3D"_blank"=
+ style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#21=
+96F3 !important;mso-line-height-rule:exactly;text-decoration:none;"><img sr=
+c=3D"https://s3.tradingview.com/mail/youtube_email_logo.png" width=3D"32" h=
+eight=3D"32" alt=3D"Yt" style=3D"-ms-interpolation-mode:bicubic;border:0"><=
+/a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"-ms-text-size-=
+adjust:100%;-webkit-text-size-adjust:100%;mso-line-height-rule:exactly;padd=
+ing-left:3px;padding-right:0;vertical-align:top;">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<a href=3D"https://link-=
+n.tradingview.com/CL0/https:%2F%2Fwww.linkedin.com%2Fcompany%2Ftradingview%=
+2F/1/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/pJvIGzAlq=
+MmstrM7WgtD3H_sKoNFhvgnqs4wN5chYTY=3D160" target=3D"_blank" style=3D"-ms-te=
+xt-size-adjust:100%;-webkit-text-size-adjust:100%;color:#2196F3 !important;=
+mso-line-height-rule:exactly;text-decoration:none;"><img src=3D"https://s3.=
+tradingview.com/mail/linkedin_email_logo.png" width=3D"32" height=3D"32" al=
+t=3D"In" style=3D"-ms-interpolation-mode:bicubic;border:0"></a>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=
+</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</t=
+able>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<![=
+endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td st=
+yle=3D"-ms-text-size-adjust:100%;-webkit-font-smoothing:subpixel-antialiase=
+d;-webkit-text-size-adjust:100%;color:#8b8e95;font-family:'Trebuchet MS', '=
+Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;font-size:=
+14px;line-height:20px;mso-line-height-rule:exactly;text-align:center;vertic=
+al-align:top;">
+You are receiving this email because you registered on <a href=3D"https://l=
+ink-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2F%3Futm_source=
+=3Dnotification_email%26utm_medium=3Demail%26utm_campaign=3Dnotification_pu=
+bscript_update/1/01000174dcc81a4e-4b087f76-85a3-4c1e-b9d7-b63f8cd37080-0000=
+00/RQcQkovDvKJHmhDFnVzvT8PwWhCJ7DzRxuJk1tglaew=3D160" style=3D"-ms-text-siz=
+e-adjust:100%;-webkit-text-size-adjust:100%;color:#2196F3 !important;mso-li=
+ne-height-rule:exactly;text-decoration:none;" target=3D"_blank"><span style=
+=3D"color:#2196F3; ">www.tradingview.com</span></a> and subscribed to recei=
+ve email updates about TradingView users and ideas.
+
+=09=09To manage your subscription options or to unsubscribe go to <a href=
+=3D"https://link-n.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2Fu%=
+2F%3Futm_source=3Dnotification_email%26utm_medium=3Demail%26utm_campaign=3D=
+notification_pubscript_update%23notifications/1/01000174dcc81a4e-4b087f76-8=
+5a3-4c1e-b9d7-b63f8cd37080-000000/XJC2LFG_IFUvRGxkKwFhDWfjaoHhE-TqitxM29kD3=
+Lg=3D160" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;=
+color:#2196F3 !important;mso-line-height-rule:exactly;text-decoration:none;=
+" target=3D"_blank"><span style=3D"color:#2196F3; ">your profile</span></a>=
+.
+
+=09=09To unsubscribe from all email notifications <a href=3D"https://link-n=
+.tradingview.com/CL0/https:%2F%2Fwww.tradingview.com%2Faccounts%2Funsubscri=
+be%2FbJIVF5qQMIJLBBZ7%2F%3Futm_source=3Dnotification_email%26utm_medium=3De=
+mail%26utm_campaign=3Dnotification_pubscript_update/1/01000174dcc81a4e-4b08=
+7f76-85a3-4c1e-b9d7-b63f8cd37080-000000/0ltEy9urnWN_aDZ3hJVRxjLTNyvvy_Nv5ho=
+2G1jpBOw=3D160" style=3D"-ms-text-size-adjust:100%;-webkit-text-size-adjust=
+:100%;color:#2196F3 !important;mso-line-height-rule:exactly;text-decoration=
+:none;" target=3D"_blank"><span style=3D"color:#2196F3; ">click here</span>=
+</a>.=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<=
+/td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte ms=
+o 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09<![endif]-->
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09</td>
+=09=09=09=09</tr>
+=09=09=09</tbody>
+=09=09</table>
+=09<img alt=3D"" src=3D"http://link-n.tradingview.com/CI0/01000174dcc81a4e-=
+4b087f76-85a3-4c1e-b9d7-b63f8cd37080-000000/jv3Pbgfc4eFYAgdGIMSLrCBn_RgbhcI=
+c0pYmH-eGe6g=3D160" style=3D"display: none; width: 1px; height: 1px;">
+</body>
+</html>
+--===============6157189168803913371==--

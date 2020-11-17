@@ -1,16 +1,18 @@
 var mysql = require('./include/mysqlQueryExecutor');
 
 var deleteStrategy = function(request, response){
+  // TODO: also delete associated marketData, but only if there is only one ticker in Strategies
   const id = request.params.id;
   const query = {
-    sql: 'DELETE FROM `Strategies` WHERE `id`=?',
+    sql: 'CALL deleteStrategy(?)',
     values: [id]
   }
   mysql.query(query, function(error, result){
-    // console.log('error, ', error);
-    // console.log('result, ', result);
-  });
-  response.send('1');
+    if(!error){
+      response.send('1');
+    }
+    console.log('error, result = ', error, result);
+  })
 }
 
 var getStrategyIDs = function(request, response){
@@ -60,12 +62,12 @@ var getUniqueStrategies = function(request, response){
           uniqueStrategies[strategyTitleItr].push(result[i].id);
         }
       }
+
       response.send(JSON.stringify(uniqueStrategies));
     }
   });
 
 }
-
 
 exports.deleteStrategy = deleteStrategy;
 exports.getStrategyIDs = getStrategyIDs;

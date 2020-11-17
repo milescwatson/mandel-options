@@ -54,6 +54,22 @@ body {
 a {
 
 }
+
+.bp3-tab {
+  color: white
+}
+.modeChangeTabs>* {
+
+}
+.bp3-tab[aria-selected="true"] {
+  color: white;
+}
+
+.bp3-tab-title_undefined_main {
+  color: white;
+}
+
+
 /* .Ticker>* {
   display: inline;
 }

@@ -1,12 +1,13 @@
 // periodic tasks
-const log = require('why-is-node-running') // should be your first require
 var apiCredentials = require('./include/apiCredentials'),
     mysql = require("./include/mysqlQueryExecutor"),
     fetch = require('node-fetch'),
     _ = require('lodash'),
     validOptionSymbolsFile = require('./include/marketData/validOptionSymbols.json'),
     mFetch = require('./include/mFetch'),
-    fs = require('fs');
+    fs = require('fs'),
+    moment = require('moment'),
+    apiBaseUrl = apiCredentials.apiBaseUrl;
 
 // PRIVATE
 var getAllActiveTickers = function(callback){
@@ -60,7 +61,3 @@ var getValidOptionSymbols = function(){
     }
   });
 }
-
-getValidOptionSymbols();
-
-cacheEODStockQuotes((error, data)=>{});

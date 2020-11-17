@@ -14,8 +14,8 @@ var StrategyItem = function(props){
     var ret = [];
     // get all ids, if id is in the assoc ids prop, then render it
     mFetch.getTextJSON('/get-strategy-ids', (error, response)=>{
+      console.log('!!!!');
       if(!error){
-
         for (var i = 0; i < response.length; i++) {
           if(props.assocKeys.includes(response[i])){
             ret.push(
@@ -42,12 +42,22 @@ var StrategyItem = function(props){
     "borderBottomRightRadius": (expanded ? '0' : '2px')
   }
 
+  var getStrategyTitle = function(){
+    var title;
+    try {
+      title = props.strategyTitle.split('$$_')[1].toUpperCase();
+    } catch (e) {
+      title = props.strategyTitle;
+    }
+
+    return(title)
+  }
 
   return(
   <React.Fragment>
     <div className="StrategyItem">
       <div style={headerStyle} className="strategyItemHeader" onClick={()=>{changeExpanded(!expanded)}}>
-        <h5 className="stratTitle">{props.strategyTitle.split('$$_')[1].toUpperCase()}</h5>
+        <h5 className="stratTitle">{getStrategyTitle()}</h5>
         <Icon className="toggleButton" icon={ expanded ? 'chevron-up' : 'chevron-down'} intent={"primary"} iconSize={30} />
       </div>
       <div className="expandedContentS" style={expandedContentDynamicStyle}>

@@ -34,10 +34,6 @@ var isolateStrikeDateData = function(marketDataObj, selectedDate, callback){
   callback(null, generateChain(callOptions, putOptions));
 }
 
-// chain
-  // callSide: {}
-  // putSide: {}
-
 var generateChain = function(calls, puts){
   var optionChain = {};
 

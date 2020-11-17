@@ -75,13 +75,11 @@ var OptionChain = function(props){
   var generateStyle = function(strikePrice, side){
     var style = {};
     if(side === "calls"){
-      if(strikePrice < props.price){
+      if(parseFloat(strikePrice) < props.price){
         style["backgroundColor"] = "rgb(175 175 175)";
       }
-    }
-
-    if(side === "puts"){
-      if(strikePrice > props.price){
+    }else if(side === "puts"){
+      if(parseFloat(strikePrice) > props.price){
         style["backgroundColor"] = "rgb(175 175 175)";
       }
     }
@@ -89,9 +87,13 @@ var OptionChain = function(props){
     return(style);
   }
   var TableBody = function(){
+    var sortF = function(a,b){
+      return (a - b);
+    }
+
     return(
       <tbody>
-      {Object.keys(marketData).sort().map(function(strikePrice, strikeRowIdx){
+      {Object.keys(marketData).sort(sortF).map(function(strikePrice, strikeRowIdx){
         return(
           <tr key = {strikeRowIdx}>
             {

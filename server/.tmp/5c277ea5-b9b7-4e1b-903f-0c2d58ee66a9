@@ -1,0 +1,71 @@
+Received: by mail-ej1-f49.google.com with SMTP id a26so4185605ejc.2
+        for <strategyparser@excel.level4s.com>; Wed, 26 Aug 2020 11:13:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-original-authentication-results:x-gm-message-state:delivered-to
+         :date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding;
+        bh=P8nSzde1YhxLEg9AkZZ1TBVk6f8y4xF/F+BzPkj1cd4=;
+        b=omAkT+lJYzC75jiO/Np+7vpsHSXeOPh2pfVqPpkqHPsi4hpVTGPC2Esh57O7Ja0wF+
+         s3kc4W2lYX4E1emuYsYBfMoSVXayCKS1sCT/JB61NEiW6pS8MNtmOJEzvNhrF63hwabM
+         A/xdsIylzgW3JrfRNe+nZ6rvnhYpJWs3rKhUiF6XklNZscBtpBV/uiZXiJhQ7Wc3Q/uP
+         7kdYhg3zv+cY9nn8ZA7kbV4S0KsfpTPs7Rh8B1WG8dSVdOQurlneySoYpmt6wSRbHKu+
+         ycmnqKqUzfg3p7HmuXqbpiM25xmzwrUb7+ES3QsdqlZ/DH6pfeoHHoTI/tTdhbgixAHL
+         1TGw==
+X-Original-Authentication-Results: mx.google.com;       spf=pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) smtp.mailfrom=alerts@thinkorswim.com;       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=thinkorswim.com
+X-Gm-Message-State: AOAM53343c6FyT8yu/wVLz2kC6mxCif5ARpXteWMLee4UYGSPFBnRa/A
+	TOYn5+Dfxvs4eCC6n5g2lXxwfupAjcMQArbsjQSse5HturxXlsOu9Q==
+X-Received: by 2002:a17:906:b2c3:: with SMTP id cf3mr17823356ejb.387.1598465627085;
+        Wed, 26 Aug 2020 11:13:47 -0700 (PDT)
+X-Forwarded-To: strategyparser@excel.level4s.com
+X-Forwarded-For: scotthaasbot@gmail.com strategyparser@excel.level4s.com
+Delivered-To: scotthaasbot@gmail.com
+Received: by 2002:a54:3bd2:0:0:0:0:0 with SMTP id g18csp4066227ecu;
+        Wed, 26 Aug 2020 11:13:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/MxHDo33peEZ3czHbHl6yFGidX1FsKP4pG6hOyQGtA2rQFe+D0ctnenF+PxNUj/DYEZUS
+X-Received: by 2002:a9d:6346:: with SMTP id y6mr2899373otk.176.1598465625811;
+        Wed, 26 Aug 2020 11:13:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598465625; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kj1z+1PVovnqWS1Nntgn5vLrO+cNFIdeCk7AJVtL9FWTc7EFGrKPY6DNexN4O4u4qy
+         9BRX4PKQ4r/8JTI2iBeLTsUbqphRv4fLkKqjp1W5XXWhMYnkfAeaJ3CJ1bzI3jvs+XtO
+         iNFtloBuzOGuhQ0FmMKJaBZKb/3ylMot12x58p30I6dN0uxzZBMFzSy1hCxyFpB9X48h
+         dqu+G5c747HVJJjvD47pTIJNLQllf2a8YBH28L6H/1eD3xjhRxysYOmrOMLRUjwQrUij
+         qlWkfPn2lQ5c8jE0AFqpc/9I1dxeuRw6r8rDGG/YaKsoBFPl8rHZzhEtR1rcKFLwd7s3
+         pYbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date;
+        bh=P8nSzde1YhxLEg9AkZZ1TBVk6f8y4xF/F+BzPkj1cd4=;
+        b=xBZd2QAJv3S7LcXbg5tmO4SdeRSvUWvN3L+9BsDyMIhoJFnn4ikbFDrCPpH30jUAnS
+         xpzv4lcj2RWXxqthuHy/TOIFrxYeYCFwbm2pdAzo8rDsU84N8H66Z92sNuCLYOQ8D5RO
+         H3t+Qw3bKFnwDhbms5XIBRGcxAGexVUM4aMlnD60llnf4znqQ6xDNogjvs7YE6KoKwau
+         PQ93Y9Jz5ODqzzzo3W0Su7SJ1kvEjQ9rx23dRz78nd4kxq39a9tXlJupmEaBso1lOSPf
+         OZS7Q5HLuUaq1insfpdslHMhAHWzGUGARUTfmGI/c6Tq1atReW8KADTli0HEP8xRmb8/
+         gXxg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) smtp.mailfrom=alerts@thinkorswim.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=thinkorswim.com
+Return-Path: <alerts@thinkorswim.com>
+Received: from prdtxlvtosmx03.clientsys.local (tosmx.thinkorswim.com. [198.200.170.92])
+        by mx.google.com with ESMTP id t28si1344573otr.110.2020.08.26.11.13.45
+        for <scotthaasbot@gmail.com>;
+        Wed, 26 Aug 2020 11:13:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) client-ip=198.200.170.92;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of alerts@thinkorswim.com designates 198.200.170.92 as permitted sender) smtp.mailfrom=alerts@thinkorswim.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=thinkorswim.com
+Received: from prdtxlstlapp27.clientsys.local (unknown [10.137.4.55])
+	by prdtxlvtosmx03.clientsys.local (Postfix) with ESMTP id B3F7D204CAF9
+	for <scotthaasbot@gmail.com>; Wed, 26 Aug 2020 13:13:44 -0500 (CDT)
+Date: Wed, 26 Aug 2020 13:13:45 -0500 (CDT)
+From: alerts@thinkorswim.com
+To: scotthaasbot@gmail.com
+Message-ID: <565497171.261696.1598465625530.JavaMail.tosprod@prdtxlstlapp27>
+Subject: #4867460499 BOT +1 VIX 100 18 NOV 20 [AM] 26 CALL @5.92
+ CBOEMARK=25.15 IMPL VOL=102.05% , ACCOUNT 27*****09
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+#4867460499 BOT +1 VIX 100 18 NOV 20 [AM] 26 CALL @5.92 CBOEMARK=25.15 IMPL VOL=102.05% , ACCOUNT 27*****09

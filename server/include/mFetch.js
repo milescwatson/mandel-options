@@ -30,10 +30,10 @@ var getTextJSON = function(url, callback){
     callback(error, null)
   });
 }
-var json = function(callback){
 
-}
+// var getCachedJSON = function(baseURL, urlQueries, timeToSave){
+//
+// }
 
 exports.getText = getText;
-exports.json = json;
 exports.getTextJSON = getTextJSON;

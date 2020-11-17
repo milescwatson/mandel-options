@@ -32,6 +32,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://157.245.94.27:80",
   "homepage": "http://excel.level4s.com"
 }

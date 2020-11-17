@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from './Header.js';
 import StrategyItem from './StrategyItem';
+import { Tab, Tabs } from "@blueprintjs/core";
+import GenerateSymbols from './Tiles/GenerateSymbols';
+import TileTable from './Tiles/TileTable';
 
 import LoginPage from './LoginPage';
 
@@ -14,7 +17,8 @@ class App extends React.Component {
       strategyArray: [],
       strategiesLoaded: false,
       loginStatus: false,
-      strategyItemComps: []
+      strategyItemComps: [],
+      mode: 'tile'
     }
     this.state = initialState;
   }
@@ -32,11 +36,11 @@ class App extends React.Component {
         } catch (e) {
           this.setState({loginStatus: false})
         }
-        mFetch.getText('/health', (error, result)=>{
-          if(result !== '1'){
-            this.setState({loginStatus: false})
-          }
-        });
+        // mFetch.getText('/health', (error, result)=>{
+        //   if(result !== '1'){
+        //     this.setState({loginStatus: false})
+        //   }
+        // });
     }.bind(this))
   }.bind(this);
 
@@ -68,8 +72,32 @@ class App extends React.Component {
     this.checkLoginStatus();
     // this.getStrategies();
     this.generateStrategyItems();
-
+    // setInterval(this.generateStrategyItems, 5000);
   }.bind(this);
+
+  handleTabChange = function(newTab){
+    this.setState({
+      mode: newTab
+    })
+  }.bind(this);
+
+  AppAlt = function(){
+    return(
+      <>
+      <h1>Strategies</h1>
+      {this.state.mode === 'main' ? ((this.state.strategiesLoaded ? (this.state.strategyItemComps) : (<h5>Loading strategies...</h5>))) : ''}
+      </>
+    )
+  }.bind(this)
+
+  TileMode = function(){
+    return(
+      <>
+      <h1>Tile Trend</h1>
+      <TileTable />
+      </>
+    )
+  }
 
   AppOrLogin = function(){
     if(this.state.loginStatus){
@@ -78,9 +106,12 @@ class App extends React.Component {
           <Header />
 
           <div className="app">
-            <h1>Strategies</h1>
-            {(this.state.strategiesLoaded ? (this.state.strategyItemComps) : (<h5>Loading strategies...</h5>))}
+            <Tabs large={true} onChange={this.handleTabChange} selectedTabId={this.state.mode} className="modeChangeTabs">
+                <Tab id="tile" title="Tile Trend" panel={<this.TileMode />} />
+                <Tab id="main" title="Main" panel={<this.AppAlt />} />
+            </Tabs>
           </div>
+
         </React.Fragment>
       );
     }else{

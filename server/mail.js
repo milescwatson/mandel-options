@@ -1,6 +1,7 @@
 var mailin = require('mailin'),
     fs = require('fs'),
-    mysql = require("./include/mysqlQueryExecutor");
+    mysql = require("./include/mysqlQueryExecutor"),
+    market = require("./market");
 
 var startMailServer = function(){
   mailin.start({
@@ -72,23 +73,26 @@ var parseMessage = function(data){
       // go through each ticker
       const direction = findDirection(strategyTitle),
             tickerAndExchangeObjects = getTickerAndExchanges(messageBody);
-
       for (var i = 0; i < tickerAndExchangeObjects.length; i++) {
+        // if
         const insertUnderlyingProc = {
           sql: 'CALL insertUnderlying(?,?,?,?,?)',
           values: [tickerAndExchangeObjects[i].ticker, tickerAndExchangeObjects[i].exchange, direction, strategyTitle, '']
         }
-        // const insertQuery = {
-        //   sql: 'INSERT INTO Strategies(`ticker`, `exchange`, `strategyDirection`, `strategyParsedText`, `emailBodyText`) VALUES(?,?,?,?,?)',
-        //   values: [tickerAndExchangeObjects[i].ticker, tickerAndExchangeObjects[i].exchange, direction, strategyTitle, messageBody]
-        // }
-        mysql.query(insertUnderlyingProc, function(error, result){
-          if(error){
-            console.log('error: could not add parsed strategy to database: ', error);
-          }else{
-            console.log(`success, added ${tickerAndExchangeObjects[i].ticker}= `, result);
-          }
-        });
+
+        console.log(`inserting`, tickerAndExchangeObjects[i].ticker);
+        if(market.symbolHasOptionsLocal(tickerAndExchangeObjects[i].ticker)){
+          console.log('hasOptions = true', tickerAndExchangeObjects[i].ticker);
+          mysql.executeQueryWithConnect(insertUnderlyingProc, (error, result)=>{
+            if(error){
+              console.log('error: could not add parsed strategy to database: ', error);
+            }else{
+              // console.log(`success, added`, tickerAndExchangeObjects[i].ticker);
+            }
+          });
+        }else {
+          console.log(`Skipped symbol ${tickerAndExchangeObjects[i].ticker}, does not have options`);
+        }
 
       }
     }
