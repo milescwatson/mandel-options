@@ -6,12 +6,4 @@ The strategy detection relies on the alert title being preceded by “$$”, and
 ## API guide
 `/delete-strategy/:id`
 
-
-
-
 Developed by Miles Watson
-
-
-## TODO:
-Add loading for strategies
-Sort strategies by date
